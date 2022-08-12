@@ -1,7 +1,7 @@
 package br.com.uniamerica.osanabackend.repositories;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import br.com.uniamerica.osanabackend.model.Client;
+import br.com.uniamerica.osanabackend.entities.Client;
 
 public interface ClientRepository extends JpaRepository<Client, Long>{
     List<Client> findByContract (Boolean contract);

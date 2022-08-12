@@ -1,13 +1,12 @@
 package br.com.uniamerica.osanabackend.controllers;
 
-import br.com.uniamerica.osanabackend.model.Client;
+import br.com.uniamerica.osanabackend.entities.Client;
 import br.com.uniamerica.osanabackend.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

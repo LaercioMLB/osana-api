@@ -1,4 +1,4 @@
-package br.com.uniamerica.osanabackend.model;
+package br.com.uniamerica.osanabackend.entities;
 import javax.persistence.*;
 
 @Entity
