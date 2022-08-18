@@ -30,12 +30,12 @@ public class OSService {
     }
 
     public OSDTO save(NewOSDTO newOSDTO) {
-        osRepository.findById(newOSDTO.getUserId()).orElseThrow(() -> new IllegalStateException("Not Found User by ID:" + newOSDTO.getUserId()));
+        userRepository.findById(newOSDTO.getUserId()).orElseThrow(() -> new IllegalStateException("Not Found User by ID:" + newOSDTO.getUserId()));
         return new OSDTO(osRepository.save(newOSDTO.toModel()));
     }
 
     public OSDTO update(long idOS, NewOSDTO newOSDTO) {
-        OS os = osRepository.findById(idOS).orElseThrow(() -> new IllegalStateException("Not Found OS by ID:" + idOS));
+        OS os = osRepository.findById(idOS).orElseThrow(() -> new IllegalStateException("Not Found OS by IDD:" + idOS));
 
         os.setMotive(newOSDTO.getMotive());
         os.setObs(newOSDTO.getObs());
