@@ -2,7 +2,7 @@ package br.com.uniamerica.Osana.model;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
-
+//
 @Entity
 @Data
 @NoArgsConstructor
