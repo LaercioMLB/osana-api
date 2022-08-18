@@ -1,4 +1,4 @@
-package br.com.uniamerica.Osana.service.OS;
+package br.com.uniamerica.Osana.service;
 
 import br.com.uniamerica.Osana.dto.OSDTO;
 import br.com.uniamerica.Osana.dto.input.NewOSDTO;

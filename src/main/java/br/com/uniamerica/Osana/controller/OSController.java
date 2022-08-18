@@ -2,7 +2,7 @@ package br.com.uniamerica.Osana.controller;
 
 import br.com.uniamerica.Osana.dto.OSDTO;
 import br.com.uniamerica.Osana.dto.input.NewOSDTO;
-import br.com.uniamerica.Osana.service.OS.OSService;
+import br.com.uniamerica.Osana.service.OSService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
