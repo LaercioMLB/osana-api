@@ -11,7 +11,7 @@ public class LoginForm {
     private String username;
     @NotNull
     @NotEmpty
-    private String senha;
+    private String password;
 
     public String getUsername() {
         return username;
@@ -21,15 +21,15 @@ public class LoginForm {
         this.username = username;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
     public UsernamePasswordAuthenticationToken converter() {
-        return new UsernamePasswordAuthenticationToken(username, senha);
+        return new UsernamePasswordAuthenticationToken(username, password);
     }
 }

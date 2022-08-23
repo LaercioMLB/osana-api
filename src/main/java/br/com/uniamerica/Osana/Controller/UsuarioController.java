@@ -30,7 +30,7 @@ public class UsuarioController {
     private RoleRepository roleRepository;
 
     @GetMapping
-    //@PreAuthorize("hasRole('ROLE_GESTOR')")
+    @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<List<UsuarioDTO>> findAllUsers(){
         List<Usuario> listUSers = usuarioRepository.findAll();
         List<UsuarioDTO> listUSersDTO = UsuarioDTO.convert(listUSers);
@@ -38,6 +38,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<UsuarioDetailedDTO> findUserId(@PathVariable Long id){
         Optional<Usuario> user = usuarioRepository.findById(id);
         if (user.isPresent()){
@@ -49,6 +50,7 @@ public class UsuarioController {
 
     @PostMapping
     @Transactional
+    @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<?> createUser(@RequestBody @Valid UsuarioForm form, UriComponentsBuilder uriComponentsBuilder){
         Optional<Usuario> existsUser = usuarioRepository.findByUsername(form.getUsername());
         if (existsUser.isPresent()){
@@ -65,6 +67,7 @@ public class UsuarioController {
 
     @PutMapping("/{id}")
     @Transactional
+    @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<UsuarioDetailedDTO> updateUser(@PathVariable Long id, @RequestBody @Valid UpdateUsuarioForm form){
         Optional<Usuario> user = usuarioRepository.findById(id);
         if (user.isPresent()){
@@ -77,6 +80,7 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<?> deleteUser(@PathVariable Long id){
         Optional<Usuario> user = usuarioRepository.findById(id);
         if (user.isPresent()){

@@ -26,6 +26,13 @@ public class UpdateUsuarioForm {
     @NotEmpty
     private String typeUser;
 
+    public UpdateUsuarioForm(String name, String username, String email, String typeUser) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.typeUser = typeUser;
+    }
+
     public Usuario updateUser(Usuario user, RoleRepository roleRepository, UsuarioRepository usuarioRepository){
         Optional<Role> role = roleRepository.findByName(this.typeUser);
         user.setName(this.name);
