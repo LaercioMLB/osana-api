@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import br.com.uniamerica.Osana.exception.*;
 import javax.transaction.Transactional;
@@ -25,7 +26,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
-   // private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
 
     public List<UserDTO> findAll() {
@@ -34,7 +35,7 @@ public class UserService implements UserDetailsService {
 
     public UserDTO save(NewUserDTO newUserDTO) {
         ifUsernameExistsReturnException(newUserDTO.getUsername());
-        newUserDTO.setPassword(newUserDTO.getPassword());
+        newUserDTO.setPassword(passwordEncoder.encode(newUserDTO.getPassword()));
         return new UserDTO(userRepository.save(newUserDTO.toModel()));
     }
 

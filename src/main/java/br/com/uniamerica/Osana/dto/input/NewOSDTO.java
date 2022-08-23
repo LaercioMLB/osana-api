@@ -18,11 +18,8 @@ public class NewOSDTO {
     private String motive;
     @NotBlank(message = "OBS is Required")
     private String obs;
-    @NotBlank(message = "Devolution date is Required")
     private Date devolution;
-    @NotBlank(message = "Date is Required")
     private Date dateOS;
-    @NotBlank(message = "User is Required")
     private Long userId;
 //
     public OS toModel(){

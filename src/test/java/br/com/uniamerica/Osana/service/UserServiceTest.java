@@ -33,13 +33,13 @@ class UserServiceTest {
     @Mock
     private RoleRepository roleRepository;
     @Mock
-    //private PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     private UserService userService;
 
     @BeforeEach
     void setUp() {
-        userService = new UserService(userRepository, roleRepository);
+        userService = new UserService(userRepository, passwordEncoder, roleRepository);
     }
 
     @Test

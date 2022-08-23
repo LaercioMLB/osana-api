@@ -24,6 +24,7 @@ public class OSController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
     public OSDTO addItem(@Valid @RequestBody NewOSDTO newOSDTO) {
         return osService.save(newOSDTO);
     }
