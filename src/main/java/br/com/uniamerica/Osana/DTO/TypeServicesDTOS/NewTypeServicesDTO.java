@@ -1,6 +1,7 @@
 package br.com.uniamerica.Osana.DTO.TypeServicesDTOS;
 
 import br.com.uniamerica.Osana.Model.TypeServices;
+import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -8,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 
 public class NewTypeServicesDTO{
-   // @NotBlank(message = "Type Services is required")
+//    @NotBlank(message = "Type Services is required")
     @NotNull
     @NotEmpty
     private String services;
@@ -19,6 +20,10 @@ public class NewTypeServicesDTO{
         return typeServices;
     }
 
+    public TypeServices updateServices(TypeServices updateTypeServices, TypeServicesRepository typeServicesRepository){
+        updateTypeServices.setServices(this.services);
+        return updateTypeServices;
+    }
     public String getServices() {
         return services;
     }

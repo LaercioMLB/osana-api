@@ -13,4 +13,20 @@ public class TypeServicesDTO implements Serializable {
         this.idTypeServices = typeServices.getIdTypeServices();
         this.services = typeServices.getServices();
     }
+
+    public Long getIdTypeServices() {
+        return idTypeServices;
+    }
+
+    public void setIdTypeServices(Long idTypeServices) {
+        this.idTypeServices = idTypeServices;
+    }
+
+    public String getServices() {
+        return services;
+    }
+
+    public void setServices(String services) {
+        this.services = services;
+    }
 }
