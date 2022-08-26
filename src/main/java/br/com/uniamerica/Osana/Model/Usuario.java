@@ -29,6 +29,9 @@ public class Usuario implements UserDetails {
     }
 
     public Usuario() {}
+    public Usuario(Long id) {
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {
