@@ -7,14 +7,11 @@ import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 import org.apache.tomcat.util.net.openssl.OpenSSLConf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import java.lang.reflect.Type;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
