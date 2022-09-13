@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface OSRepository extends JpaRepository<OS, Long> {
     Optional<OSRepository> findByDateOS(Date dateOS);
     Optional<OS> findByMotive(String motive); ///PROVISORIO!!!
-    Optional<OSRepository> findByUser (Long idUsuario);
+    Optional<OSRepository> findByUsuario(Long idUsuario);
 
 }
 
