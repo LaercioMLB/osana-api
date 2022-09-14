@@ -1,5 +1,6 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
 
+import br.com.uniamerica.Osana.Model.Equipment;
 import br.com.uniamerica.Osana.Model.OS;
 import br.com.uniamerica.Osana.Model.Priority;
 import br.com.uniamerica.Osana.Model.Usuario;
@@ -22,6 +23,7 @@ public class OSDTO implements Serializable {
     private Date dateOS;
     private Priority priority;
     private Usuario usuario;
+    private Equipment equipment;
 
     public OSDTO(OS os){
         idOS = os.getIdOS();
@@ -31,5 +33,6 @@ public class OSDTO implements Serializable {
         dateOS = os.getDateOS();
         priority = os.getPriority();
         usuario = os.getUsuario();
+        equipment = os.getEquipment();
     }
 }

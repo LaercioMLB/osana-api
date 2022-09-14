@@ -1,9 +1,6 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
 
-import br.com.uniamerica.Osana.Model.OS;
-import br.com.uniamerica.Osana.Model.Priority;
-import br.com.uniamerica.Osana.Model.TypeServices;
-import br.com.uniamerica.Osana.Model.Usuario;
+import br.com.uniamerica.Osana.Model.*;
 import br.com.uniamerica.Osana.Repository.OSRepository;
 import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 import lombok.AllArgsConstructor;
@@ -27,7 +24,7 @@ public class NewOSDTO {
     private Date dateOS;
     private Long idPriority;
     private Long idUsuario;
-    //
+    private Equipment equipment;
     public OS toModel(){
         OS os = new OS();
         os.setMotive(getMotive());
@@ -35,6 +32,7 @@ public class NewOSDTO {
         os.setDevolution(getDevolution());
         os.setDateOS(getDateOS());
         os.setUsuario(new Usuario(idUsuario));
+        os.setEquipment(getEquipment());
 
         return os;
     }
@@ -43,6 +41,7 @@ public class NewOSDTO {
         updateOS.setObs(this.obs);
         updateOS.setDevolution(this.devolution);
         updateOS.setDateOS(this.dateOS);
+        updateOS.setEquipment(this.getEquipment());
         return updateOS;
     }
 }
