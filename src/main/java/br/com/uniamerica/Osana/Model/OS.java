@@ -24,4 +24,7 @@ public class OS {
     private Usuario usuario;
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Priority priority;
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Status status;
 }
