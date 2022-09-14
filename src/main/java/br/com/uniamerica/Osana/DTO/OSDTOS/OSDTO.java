@@ -1,6 +1,7 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
 
 import br.com.uniamerica.Osana.Model.OS;
+import br.com.uniamerica.Osana.Model.Priority;
 import br.com.uniamerica.Osana.Model.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +20,7 @@ public class OSDTO implements Serializable {
     private String obs;
     private Date devolution;
     private Date dateOS;
+    private Priority priority;
     private Usuario usuario;
 
     public OSDTO(OS os){
@@ -27,6 +29,7 @@ public class OSDTO implements Serializable {
         obs = os.getObs();
         devolution = os.getDevolution();
         dateOS = os.getDateOS();
+        priority = os.getPriority();
         usuario = os.getUsuario();
     }
 }

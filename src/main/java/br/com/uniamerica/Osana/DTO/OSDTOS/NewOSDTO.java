@@ -1,6 +1,7 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
 
 import br.com.uniamerica.Osana.Model.OS;
+import br.com.uniamerica.Osana.Model.Priority;
 import br.com.uniamerica.Osana.Model.TypeServices;
 import br.com.uniamerica.Osana.Model.Usuario;
 import br.com.uniamerica.Osana.Repository.OSRepository;
@@ -24,6 +25,7 @@ public class NewOSDTO {
     private String obs;
     private Date devolution;
     private Date dateOS;
+    private Long idPriority;
     private Long idUsuario;
     //
     public OS toModel(){
@@ -41,7 +43,6 @@ public class NewOSDTO {
         updateOS.setObs(this.obs);
         updateOS.setDevolution(this.devolution);
         updateOS.setDateOS(this.dateOS);
-        //updateOS.setUsuario(new Usuario(idUsuario) );
         return updateOS;
     }
 }
