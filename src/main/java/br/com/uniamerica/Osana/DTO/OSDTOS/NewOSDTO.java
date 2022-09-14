@@ -1,6 +1,7 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
 
 import br.com.uniamerica.Osana.Model.OS;
+import br.com.uniamerica.Osana.Model.Status;
 import br.com.uniamerica.Osana.Model.TypeServices;
 import br.com.uniamerica.Osana.Model.Usuario;
 import br.com.uniamerica.Osana.Repository.OSRepository;
@@ -25,6 +26,8 @@ public class NewOSDTO {
     private Date devolution;
     private Date dateOS;
     private Long idUsuario;
+    @NotBlank(message = "Status is Required")
+    private Status status;
     //
     public OS toModel(){
         OS os = new OS();
@@ -33,6 +36,7 @@ public class NewOSDTO {
         os.setDevolution(getDevolution());
         os.setDateOS(getDateOS());
         os.setUsuario(new Usuario(idUsuario));
+        os.setStatus(getStatus());
 
         return os;
     }
@@ -41,7 +45,7 @@ public class NewOSDTO {
         updateOS.setObs(this.obs);
         updateOS.setDevolution(this.devolution);
         updateOS.setDateOS(this.dateOS);
-        //updateOS.setUsuario(new Usuario(idUsuario) );
+        updateOS.setStatus(this.status);
         return updateOS;
     }
 }
