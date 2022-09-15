@@ -1,4 +1,6 @@
-<h1 align="center"> PROJETO OSANA - ORDEM DE SERVIÇO </h1>
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/49946934/190519751-922f8170-ed0c-4f2c-92f5-6d5c2d1bc468.png" />
+</div>
 
 ## 📖 Sobre
 Osana é um projeto academico feito por estudantes do curso de **Analise e desenvolvimento de sistemas**, pela Uniámerica, tendo um demandante real aonde se
@@ -28,7 +30,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   <tr>
     <td align="center">
       <a href="#">
-        <img src="![laercio_perfil](https://user-images.githubusercontent.com/49946934/190507916-0357a087-f652-4c20-9571-429e5ad5d928.jpg)" width="300px;" alt="Foto do Laercio Bubiak no GitHub"/><br>
+        <img src="https://user-images.githubusercontent.com/49946934/190514490-1bc75bcc-f694-4dfa-b10f-747a67b891d2.png" width="100px;" alt="Foto do Laercio Bubiak no GitHub"/><br>
         <sub>
           <b>Laércio Bubiak</b>
         </sub>
@@ -36,7 +38,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="![joao_foto](https://user-images.githubusercontent.com/49946934/190507959-38981eb5-6993-4a72-98d1-179f74b0d8c7.jpeg)" width="100px;" alt="Foto do João Paulo no Github"/><br>
+        <img src="https://user-images.githubusercontent.com/49946934/190514937-904e2248-6e6e-4dd9-a92b-76b46ce9efd4.png" width="100px;" alt="Foto do João Paulo no Github"/><br>
         <sub>
           <b>João Paulo</b>
         </sub>
@@ -44,7 +46,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="![foto_ana](https://user-images.githubusercontent.com/49946934/190507984-8162def8-6a1f-4d26-adad-1aa3039f3efa.jpeg)" width="100px;" alt="Foto da Ana França no Github"/><br>
+        <img src="https://user-images.githubusercontent.com/49946934/190514820-38f39be3-ef06-42c9-ab4f-1e7ac0520ce1.png" width="100px;" alt="Foto da Ana França no Github"/><br>
         <sub>
           <b>Ana França</b>
         </sub>
@@ -52,7 +54,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="" width="100px;" alt="Foto do Willian Thiago no GitHub"/><br>
+        <img src="https://user-images.githubusercontent.com/49946934/190516870-508349b5-69b5-4d9e-854e-f2227a1d7ada.jpeg" width="100px;" alt="Foto do Willian Thiago no GitHub"/><br>
         <sub>
           <b>Willian Thiago</b>
         </sub>
@@ -60,7 +62,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="" width="100px;" alt="Foto do Eric Sacardo no GitHub"/><br>
+        <img src="https://user-images.githubusercontent.com/49946934/190514615-9911dbc4-8524-4a49-bc17-347fae7f5ca9.png" width="100px;" alt="Foto do Eric Sacardo no GitHub"/><br>
         <sub>
           <b>Eric Sacardo</b>
         </sub>
@@ -68,7 +70,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="" width="100px;" alt="Foto do Bruno Douglas no GitHub"/><br>
+        <img src="https://user-images.githubusercontent.com/49946934/190515914-9b9a11dd-93a8-4df7-857e-1d7458738686.png" width="100px;" alt="Foto do Bruno Douglas no GitHub"/><br>
         <sub>
           <b>Bruno Douglas</b>
         </sub>
