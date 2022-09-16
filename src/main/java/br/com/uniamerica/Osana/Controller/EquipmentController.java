@@ -1,7 +1,7 @@
 package br.com.uniamerica.Osana.Controller;
 
-import br.com.uniamerica.Osana.DTO.OSDTOS.EquipmentDTO;
-import br.com.uniamerica.Osana.DTO.OSDTOS.NewEquipmentDTO;
+import br.com.uniamerica.Osana.DTO.EquipmentDTOS.EquipmentDTO;
+import br.com.uniamerica.Osana.DTO.EquipmentDTOS.NewEquipmentDTO;
 import br.com.uniamerica.Osana.Model.Equipment;
 import br.com.uniamerica.Osana.Repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class EquipmentController {
         }
         Equipment newEquipment = newEquipmentDTO.toModel();
         equipmentRepository.save(newEquipment);
-        URI uri = uriComponentsBuilder.path("/os/{id}").buildAndExpand(newEquipment.getId()).toUri();
+        URI uri = uriComponentsBuilder.path("/equipment/{id}").buildAndExpand(newEquipment.getId()).toUri();
         return ResponseEntity.created(uri).body(new EquipmentDTO(newEquipment));
     }
 
@@ -53,9 +53,9 @@ public class EquipmentController {
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<EquipmentDTO> updateEquipment(@PathVariable Long id, @RequestBody @Valid NewEquipmentDTO newEquipmentDTO){
-        Optional<Equipment> existsOS = equipmentRepository.findById(id);
-        if(existsOS.isPresent()){
-            Equipment newEquipment = newEquipmentDTO.updatedEquipment(existsOS.get(),equipmentRepository);
+        Optional<Equipment> existsEquipment = equipmentRepository.findById(id);
+        if(existsEquipment.isPresent()){
+            Equipment newEquipment = newEquipmentDTO.updatedEquipment(existsEquipment.get(),equipmentRepository);
             return ResponseEntity.ok(new EquipmentDTO(newEquipment));
         }else{
             return ResponseEntity.notFound().build();

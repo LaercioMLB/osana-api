@@ -1,4 +1,4 @@
-package br.com.uniamerica.Osana.DTO.EquipmentDTOS;
+package br.com.uniamerica.Osana.DTO.InventoryDTOS;
 
 import br.com.uniamerica.Osana.Model.*;
 import lombok.AllArgsConstructor;
@@ -12,17 +12,15 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EquipmentDTO implements Serializable {
+public class InventoryDTO implements Serializable {
     private Long id;
     private String name;
-    private String model;
 
 
 
-    public EquipmentDTO(Equipment equipment){
-        id = equipment.getId();
-        name = equipment.getName();
-        model = equipment.getModel();
+    public InventoryDTO(Inventory inventory){
+        id = inventory.getId();
+        name = inventory.getName();
 
     }
 }

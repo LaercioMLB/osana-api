@@ -1,4 +1,4 @@
-package br.com.uniamerica.Osana.DTO.OSDTOS;
+package br.com.uniamerica.Osana.DTO.EquipmentDTOS;
 
 import br.com.uniamerica.Osana.Model.*;
 import br.com.uniamerica.Osana.Repository.EquipmentRepository;
