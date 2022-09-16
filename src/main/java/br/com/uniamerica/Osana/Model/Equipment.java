@@ -22,6 +22,6 @@ public class Equipment {
 
     private String name;
 
-    private String motive;
+    private String model;
 
 }
