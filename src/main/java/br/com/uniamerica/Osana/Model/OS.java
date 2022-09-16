@@ -28,5 +28,6 @@ public class OS {
     private Priority priority;
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Equipment equipment;
-
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Status status;
 }

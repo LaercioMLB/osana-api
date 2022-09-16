@@ -1,6 +1,11 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
-
 import br.com.uniamerica.Osana.Model.*;
+import br.com.uniamerica.Osana.Model.OS;
+import br.com.uniamerica.Osana.Model.Priority;
+import br.com.uniamerica.Osana.Model.Status;
+import br.com.uniamerica.Osana.Model.TypeServices;
+import br.com.uniamerica.Osana.Model.Usuario;
+
 import br.com.uniamerica.Osana.Repository.OSRepository;
 import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 import lombok.AllArgsConstructor;
@@ -25,6 +30,10 @@ public class NewOSDTO {
     private Long idPriority;
     private Long idUsuario;
     private Equipment equipment;
+    
+    @NotBlank(message = "Status is Required")
+    private Status status;
+
     public OS toModel(){
         OS os = new OS();
         os.setMotive(getMotive());
@@ -33,6 +42,7 @@ public class NewOSDTO {
         os.setDateOS(getDateOS());
         os.setUsuario(new Usuario(idUsuario));
         os.setEquipment(getEquipment());
+        os.setStatus(getStatus());
 
         return os;
     }
@@ -42,6 +52,7 @@ public class NewOSDTO {
         updateOS.setDevolution(this.devolution);
         updateOS.setDateOS(this.dateOS);
         updateOS.setEquipment(this.getEquipment());
+        updateOS.setStatus(this.status);
         return updateOS;
     }
 }

@@ -3,6 +3,7 @@ package br.com.uniamerica.Osana.DTO.OSDTOS;
 import br.com.uniamerica.Osana.Model.Equipment;
 import br.com.uniamerica.Osana.Model.OS;
 import br.com.uniamerica.Osana.Model.Priority;
+import br.com.uniamerica.Osana.Model.Status;
 import br.com.uniamerica.Osana.Model.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,8 @@ public class OSDTO implements Serializable {
     private Usuario usuario;
     private Equipment equipment;
 
+    private Status status;
+
     public OSDTO(OS os){
         idOS = os.getIdOS();
         motive = os.getMotive();
@@ -34,5 +37,6 @@ public class OSDTO implements Serializable {
         priority = os.getPriority();
         usuario = os.getUsuario();
         equipment = os.getEquipment();
+        status = os.getStatus();
     }
 }
