@@ -1,6 +1,12 @@
 <div align="center">
   <img src="https://user-images.githubusercontent.com/49946934/190519751-922f8170-ed0c-4f2c-92f5-6d5c2d1bc468.png" />
 </div>
+<div>
+  <img src="https://img.shields.io/badge/Maven-4.0-blue"/>
+  <img src="https://img.shields.io/badge/Java-18-yellow"/>
+  <img src="https://img.shields.io/badge/SpringBoot-2.7.3-yellowgreen"/>
+  <img src="https://img.shields.io/badge/STATUS-Desenvolvimento-yellow"/>
+</div>
 
 ## 📖 Sobre
 Osana é um projeto academico feito por estudantes do curso de **Analise e desenvolvimento de sistemas**, pela Uniámerica, tendo um demandante real aonde se
@@ -9,6 +15,24 @@ sistema será, poder criar uma ordem de serviço para cada equipamento que entra
 switchs, servidores e cameras. A equipe do projeto Osana, está muito empenhada e feliz para completar este projeto. Tendo todo seu código aberto aqui, de forma
 que possa usarem de referencia a seus sistema de forma exclusivamente ACADEMICA e nao comercial, para assim fortalecermos mais forte nossa area de desenvovlmento.
 
+## ✔️ Técnicas e tecnologias utilizadas
+
+- ``Java 17``
+- ``SpringBoot 2.7.3``
+- ``Maven 4.0``
+- ``InteliJ IDEA``
+- ``Técnica Top-down para testes``
+
+## 🔨 Funcionalidades do projeto
+
+- `Gerenciar ordem de serviço`: A principal funcionalidade do sistema será gerenciar um ordem de serviço, podendo depois gerencia-la, editando ou excluindo
+- `Usuario`: O sistema é voltado diretamente aos técnicos em manutenção e gestores para as criações de chamados, separando em uma pequena hierarquia, aonde o gestor pode criar um usuário técnico, ou promover o técnico a outro gestor. 
+- `Estoque`: O usuário gestor poderá adicionar ou remover itens de estoque, aonde o mesmo mostrará por exemplo: "9 placas de video", "10 memórias RAM". De uma forma quando o técnico criar a OS, será possivel ja adicionar quais itens será pegos em estoque.
+- `Status`: A OS terá um atributo de Status para saber onde está o progresso, sendo possivel editar e criar novos Status com usuário Gestor
+- `Prioridade`: Para ser compreendido o nivel de urgencia da OS, sendo: Baixa, media e alta.
+- `Equipamentos`: Saber qual é o equipamento a ser verificado, podendo ser: Computador, notebook, servidor, roteador, camera, switch.
+- `Clientes`: Neste caso, o sistema é para uso interno da empresa aonde é feita a manutenção, porém também para facilitar o caso de pesquisa ou filtro, será possivel colocar o nome do Cliente em questão que está sendo aberta a OS.
+- `Tipos de serviço`: Atributo aonde será possivel adicionar uma TAG (que pode ser criada e editada pelo usuario Gestor), mostrando qual será o tipo de serviço feito na OS.
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
