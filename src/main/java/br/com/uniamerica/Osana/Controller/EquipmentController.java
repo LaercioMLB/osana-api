@@ -1,5 +1,8 @@
 package br.com.uniamerica.Osana.Controller;
 
+import br.com.uniamerica.Osana.DTO.OSDTOS.EquipmentDTO;
+import br.com.uniamerica.Osana.DTO.OSDTOS.NewEquipmentDTO;
+import br.com.uniamerica.Osana.Model.Equipment;
 import br.com.uniamerica.Osana.Repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,27 +24,27 @@ public class EquipmentController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> createEquipment(@RequestBody @Valid NewEquipmentDTO newOSDTO, UriComponentsBuilder uriComponentsBuilder){
-        Optional<OS> existsOS = osRepository.findByMotive(newOSDTO.getMotive());
-        if (existsOS.isPresent()){
-            return ResponseEntity.badRequest().body("OS already exists");
+    public ResponseEntity<?> createEquipment(@RequestBody @Valid NewEquipmentDTO newEquipmentDTO, UriComponentsBuilder uriComponentsBuilder){
+        Optional<Equipment> existsEquipment = equipmentRepository.findByName(newEquipmentDTO.getName());
+        if (existsEquipment.isPresent()){
+            return ResponseEntity.badRequest().body("EQP already exists");
         }
-        OS newOS = newOSDTO.toModel();
-        osRepository.save(newOS);
-        URI uri = uriComponentsBuilder.path("/os/{id}").buildAndExpand(newOS.getIdOS()).toUri();
-        return ResponseEntity.created(uri).body(new OSDTO(newOS));
+        Equipment newEquipment = newEquipmentDTO.toModel();
+        equipmentRepository.save(newEquipment);
+        URI uri = uriComponentsBuilder.path("/os/{id}").buildAndExpand(newEquipment.getId()).toUri();
+        return ResponseEntity.created(uri).body(new EquipmentDTO(newEquipment));
     }
 
     @GetMapping
-    public ResponseEntity<List<OS>> findAllOS(){
-        List<OS> listOS = osRepository.findAll();
-        return ResponseEntity.ok().body(listOS);
+    public ResponseEntity<List<Equipment>> findAllEquipments(){
+        List<Equipment> listEquipment = equipmentRepository.findAll();
+        return ResponseEntity.ok().body(listEquipment);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<OSDTO> findOS(@PathVariable Long id){
-        Optional<OS> existsOS = osRepository.findById(id);
-        if(existsOS.isPresent()){
-            return ResponseEntity.ok(new OSDTO(existsOS.get()));
+    public ResponseEntity<EquipmentDTO> findEquipment(@PathVariable Long id){
+        Optional<Equipment> existsEquipment = equipmentRepository.findById(id);
+        if(existsEquipment.isPresent()){
+            return ResponseEntity.ok(new EquipmentDTO(existsEquipment.get()));
         }else{
             return ResponseEntity.notFound().build();
         }
@@ -49,11 +52,11 @@ public class EquipmentController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<OSDTO> updateOS(@PathVariable Long id, @RequestBody @Valid NewOSDTO newOSDTO){
-        Optional<OS> existsOS = osRepository.findById(id);
+    public ResponseEntity<EquipmentDTO> updateEquipment(@PathVariable Long id, @RequestBody @Valid NewEquipmentDTO newEquipmentDTO){
+        Optional<Equipment> existsOS = equipmentRepository.findById(id);
         if(existsOS.isPresent()){
-            OS newOS = newOSDTO.updatedOS(existsOS.get(),osRepository);
-            return ResponseEntity.ok(new OSDTO(newOS));
+            Equipment newEquipment = newEquipmentDTO.updatedEquipment(existsOS.get(),equipmentRepository);
+            return ResponseEntity.ok(new EquipmentDTO(newEquipment));
         }else{
             return ResponseEntity.notFound().build();
         }
@@ -61,10 +64,10 @@ public class EquipmentController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteOS(@PathVariable Long id){
-        Optional<OS> existsOS = osRepository.findById(id);
-        if(existsOS.isPresent()){
-            osRepository.deleteById(id);
+    public ResponseEntity<?> deleteEquipment(@PathVariable Long id){
+        Optional<Equipment> existsEquipment = equipmentRepository.findById(id);
+        if(existsEquipment.isPresent()){
+            equipmentRepository.deleteById(id);
             return ResponseEntity.ok().build();
         }else{
             return ResponseEntity.notFound().build();
