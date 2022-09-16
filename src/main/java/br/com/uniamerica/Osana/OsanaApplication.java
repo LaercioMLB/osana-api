@@ -2,10 +2,11 @@ package br.com.uniamerica.Osana;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 @SpringBootApplication
+@EnableSpringDataWebSupport
 public class OsanaApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(OsanaApplication.class, args);
 	}
