@@ -18,10 +18,9 @@ import javax.persistence.Id;
 public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPriority;
+    private Long id;
 
     private String name;
-
     private String model;
 
 }
