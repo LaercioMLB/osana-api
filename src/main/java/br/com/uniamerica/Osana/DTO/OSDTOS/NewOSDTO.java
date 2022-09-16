@@ -1,11 +1,6 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
-import br.com.uniamerica.Osana.Model.*;
-import br.com.uniamerica.Osana.Model.OS;
-import br.com.uniamerica.Osana.Model.Priority;
-import br.com.uniamerica.Osana.Model.Status;
-import br.com.uniamerica.Osana.Model.TypeServices;
-import br.com.uniamerica.Osana.Model.Usuario;
 
+import br.com.uniamerica.Osana.Model.*;
 import br.com.uniamerica.Osana.Repository.OSRepository;
 import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 import lombok.AllArgsConstructor;
@@ -23,26 +18,30 @@ import java.util.Date;
 public class NewOSDTO {
     @NotBlank(message = "Motive is Required")
     private String motive;
-    @NotBlank(message = "OBS is Required")
     private String obs;
+    @NotBlank(message = "devolution is Required")
     private Date devolution;
+    @NotBlank(message = "dateOS is Required")
     private Date dateOS;
-    private Long idPriority;
-    private Long idUsuario;
-    private Equipment equipment;
-    
+    @NotBlank(message = "Priority is Required")
+    private Priority priority;
     @NotBlank(message = "Status is Required")
     private Status status;
-
+    @NotBlank(message = "Type Service is Required")
+    private TypeServices typeServices;
+    @NotBlank(message = "Client is Required")
+    private Client client;
+    //
     public OS toModel(){
         OS os = new OS();
         os.setMotive(getMotive());
         os.setObs(getObs());
         os.setDevolution(getDevolution());
         os.setDateOS(getDateOS());
-        os.setUsuario(new Usuario(idUsuario));
-        os.setEquipment(getEquipment());
         os.setStatus(getStatus());
+        os.setPriority(getPriority());
+        os.setTypeServices(getTypeServices());
+        os.setClient(getClient());
 
         return os;
     }
@@ -51,8 +50,10 @@ public class NewOSDTO {
         updateOS.setObs(this.obs);
         updateOS.setDevolution(this.devolution);
         updateOS.setDateOS(this.dateOS);
-        updateOS.setEquipment(this.getEquipment());
         updateOS.setStatus(this.status);
+        updateOS.setPriority(this.priority);
+        updateOS.setTypeServices(this.typeServices);
+        updateOS.setClient(this.client);
         return updateOS;
     }
 }
