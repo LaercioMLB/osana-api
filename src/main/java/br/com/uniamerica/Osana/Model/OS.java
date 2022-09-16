@@ -3,7 +3,9 @@ package br.com.uniamerica.Osana.Model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Data
@@ -25,4 +27,21 @@ public class OS {
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Status status;
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Priority priority;
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private TypeServices typeServices;
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Client client;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    Set<Equipment> equipment;
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Inventory> inventory;
+
 }

@@ -1,8 +1,6 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
 
-import br.com.uniamerica.Osana.Model.OS;
-import br.com.uniamerica.Osana.Model.Status;
-import br.com.uniamerica.Osana.Model.Usuario;
+import br.com.uniamerica.Osana.Model.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,8 +19,11 @@ public class OSDTO implements Serializable {
     private Date devolution;
     private Date dateOS;
     private Usuario usuario;
-
     private Status status;
+    private Priority priority;
+    private TypeServices typeServices;
+    private Client client;
+
 
     public OSDTO(OS os){
         idOS = os.getIdOS();
@@ -32,5 +33,8 @@ public class OSDTO implements Serializable {
         dateOS = os.getDateOS();
         usuario = os.getUsuario();
         status = os.getStatus();
+        priority = os.getPriority();
+        typeServices = os.getTypeServices();
+        client = os.getClient();
     }
 }
