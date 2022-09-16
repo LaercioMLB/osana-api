@@ -3,7 +3,9 @@ package br.com.uniamerica.Osana.Model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,7 +26,8 @@ public class OS {
     private Usuario usuario;
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Priority priority;
-
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Equipment equipment;
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Status status;
 }
