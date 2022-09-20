@@ -2,8 +2,8 @@ package br.com.uniamerica.Osana.Controller;
 
 import br.com.uniamerica.Osana.DTO.OSDTOS.NewOSDTO;
 import br.com.uniamerica.Osana.DTO.OSDTOS.OSDTO;
-import br.com.uniamerica.Osana.Model.OS;
-import br.com.uniamerica.Osana.Repository.OSRepository;
+import br.com.uniamerica.Osana.Model.*;
+import br.com.uniamerica.Osana.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +21,18 @@ public class OSController {
 
     @Autowired
     private OSRepository osRepository;
+    @Autowired
+    private UsuarioRepository usuario;
+    @Autowired
+    private StatusRepository status;
+    @Autowired
+    private PriorityRepository priority;
+    @Autowired
+    private EquipmentRepository equipment;
+    @Autowired
+    private TypeServicesRepository typeServices;
+    @Autowired
+    private ClientRepository client;
 
     @PostMapping
     @Transactional
@@ -29,7 +41,7 @@ public class OSController {
         if (existsOS.isPresent()){
             return ResponseEntity.badRequest().body("OS already exists");
         }
-        OS newOS = newOSDTO.toModel();
+        OS newOS = newOSDTO.toModel(usuario, status, equipment,typeServices,priority, client);
         osRepository.save(newOS);
         URI uri = uriComponentsBuilder.path("/os/{id}").buildAndExpand(newOS.getIdOS()).toUri();
         return ResponseEntity.created(uri).body(new OSDTO(newOS));

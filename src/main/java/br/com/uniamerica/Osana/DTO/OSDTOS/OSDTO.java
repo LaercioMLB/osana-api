@@ -19,7 +19,7 @@ public class OSDTO implements Serializable {
     private Date devolution;
     private Date dateOS;
     private Usuario usuario;
-    private Status status;
+    private Status idStatus;
     private Priority priority;
     private TypeServices typeServices;
     private Client client;
@@ -32,7 +32,7 @@ public class OSDTO implements Serializable {
         devolution = os.getDevolution();
         dateOS = os.getDateOS();
         usuario = os.getUsuario();
-        status = os.getStatus();
+        idStatus = os.getStatus();
         priority = os.getPriority();
         typeServices = os.getTypeServices();
         client = os.getClient();
