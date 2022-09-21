@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface
 EquipmentRepository extends JpaRepository<Equipment, Long> {
     Optional<Equipment> findByName(String name);
+
+	Equipment findById(String name);
 }

@@ -58,4 +58,9 @@ public class TypeServices {
 
     }
 
+	public TypeServices statusCode(int value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

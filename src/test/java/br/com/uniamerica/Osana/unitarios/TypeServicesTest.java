@@ -1,8 +1,6 @@
 package br.com.uniamerica.Osana.unitarios;
 
 import br.com.uniamerica.Osana.Controller.TypeServicesController;
-import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.NewTypeServicesDTO;
-import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.TypeServicesDTO;
 import br.com.uniamerica.Osana.Model.TypeServices;
 import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 import org.junit.jupiter.api.Assertions;
@@ -11,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +17,13 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 public class TypeServicesTest {
+	
     @Mock
     private TypeServicesRepository typeServicesRepository;
+    
     @InjectMocks
     private TypeServicesController typeServicesController;
 

@@ -50,6 +50,26 @@ public class OS {
     private Set<Inventory> inventory;
 
 
+	public OS(long l, String string, String string2, String string3, String string4) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public OS() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public OS(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public OS(long l, String string, String string2, String string3) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public Long getIdOS() {
 		// TODO Auto-generated method stub
 		return null;
@@ -167,6 +187,13 @@ public class OS {
 	public Client getClient() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	public OS statusCode(int value) {
+		return null;
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -16,7 +16,7 @@ import java.util.Map;
 public class InventoryDTO implements Serializable {
 	private static final long serialVersionUID = -142325761316440847L;
 	
-	private Map<String, ?> id;
+	private Long id;
     private String name;
 
 

@@ -1,11 +1,11 @@
 package br.com.uniamerica.Osana.Integracao;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -25,33 +25,40 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import br.com.uniamerica.Osana.Model.Priority;
-import br.com.uniamerica.Osana.Repository.PriorityRepository;
+import br.com.uniamerica.Osana.Controller.OSController;
+import br.com.uniamerica.Osana.Model.OS;
+import br.com.uniamerica.Osana.Repository.OSRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class PriorityTest {
+public class OSIntTest {
 	
 	@Autowired
     private MockMvc mockMvc;
 
-	@Mock @Autowired
-	private PriorityRepository repository;
+	@Mock
+	@Autowired
+	private OSRepository repository;
+	
+	@Mock
+	@Autowired
+	private OSController controller;
 	
 	@Before
 	public void setUp() {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(repository).build();
+		this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 	}
 	
 	@Test
     @Order(1) @RepeatedTest(1)
     @SuppressWarnings("unused")
     @DisplayName("Teste de Sucesso de Requisição, e retorno HTTP 201")
-    public void shouldReturn201_WhenRegisteringPriority() throws Exception {
-    	Priority Prioritye = new Priority("{ \"name\": \"Alta\" }")
+    public void shouldReturn201_WhenRegisteringOS() throws Exception {
+    	OS OSe = new OS("{ \"name\": \"Ana Carolina\" }")
     	.statusCode(HttpStatus.CREATED.value());
     }
 	
@@ -59,8 +66,8 @@ public class PriorityTest {
     @Order(2) @RepeatedTest(1)
     @SuppressWarnings("unused")
     @DisplayName("Teste Falha de Requisição, e retorno HTTP 404")
-    public void shouldReturn404_WhenFailedRegisteringPriority() throws Exception {
-    	Priority Prioritye = new Priority("{ \"name\": \"Alta\" }")
+    public void shouldReturn404_WhenFailedRegisteringOS() throws Exception {
+    	OS OSe = new OS("{ \"name\": \"Ana Carolina\" }")
     	.statusCode(HttpStatus.NOT_FOUND.value());
     }
 	
@@ -68,24 +75,17 @@ public class PriorityTest {
     @Order(3) @RepeatedTest(1)
     @SuppressWarnings("unused")
     @DisplayName("Teste Falha de Requisição, e retorno HTTP 500")
-    public void shouldReturn500_WhenFailedRegisteringPriority() throws Exception {
-    	Priority Prioritye = new Priority("{ \"name\": \"Alta\" }")
+    public void shouldReturn500_WhenFailedRegisteringOS() throws Exception {
+    	OS OSe = new OS("{ \"name\": \"Ana Carolina\" }")
     	.statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
-
-    @Test @Order(4) @RepeatedTest(1)
-    @DisplayName("Teste de Cadastro de Priority")
-	public void registrationPriority() throws Exception {
-		Priority Prioritye = new Priority();
-		repository.save(Prioritye)
-        .statusCode(HttpStatus.CREATED.value());
-		assertNotNull(Prioritye);
-	}
-    
-    @Test @Order(5 ) @RepeatedTest(1)
-    @DisplayName("Teste de Remoção de Prioritye")
-    public void shouldDeletePriorityById() throws Exception {
-    	shouldDeletePriorityById();
+	
+    @Test
+    @Disabled
+    @Order(4) @RepeatedTest(1)
+    @DisplayName("Teste de Remoção de OSe")
+    public void shouldDeleteOSById() throws Exception {
+    	shouldDeleteOSById();
         mockMvc.perform(MockMvcRequestBuilders
         .delete("/{id}", 1L))
         .andExpect(status()

@@ -47,4 +47,15 @@ public class Role implements GrantedAuthority{
     }
 
     public Role() {}
+
+	public void setId(long l, String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Role statusCode(int value) {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
 }

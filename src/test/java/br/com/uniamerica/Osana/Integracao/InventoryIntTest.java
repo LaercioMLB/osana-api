@@ -1,11 +1,12 @@
 package br.com.uniamerica.Osana.Integracao;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -25,34 +26,40 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import br.com.uniamerica.Osana.Model.Status;
-import br.com.uniamerica.Osana.Repository.StatusRepository;
+import br.com.uniamerica.Osana.Controller.InventoryController;
+import br.com.uniamerica.Osana.Model.Inventory;
+import br.com.uniamerica.Osana.Repository.InventoryRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class StatusTest {
+public class InventoryIntTest {
 	
 	@Autowired
     private MockMvc mockMvc;
 
 	@Mock
 	@Autowired
-	private StatusRepository repository;
+	private InventoryRepository repository;
+	
+	@Mock
+	@Autowired
+	private InventoryController controller;
 	
 	@Before
 	public void setUp() {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(repository).build();
+		this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 	}
 	
 	@Test
     @Order(1) @RepeatedTest(1)
     @SuppressWarnings("unused")
     @DisplayName("Teste de Sucesso de Requisição, e retorno HTTP 201")
-    public void shouldReturn201_WhenRegisteringStatus() throws Exception {
-    	Status Statuse = new Status("{ \"name\": \"Ana Carolina\" }")
+    public void shouldReturn201_WhenRegisteringInventory() throws Exception {
+    	Inventory Inventorye = new Inventory("{ \"name\": \"Alta\" }")
     	.statusCode(HttpStatus.CREATED.value());
     }
 	
@@ -60,8 +67,8 @@ public class StatusTest {
     @Order(2) @RepeatedTest(1)
     @SuppressWarnings("unused")
     @DisplayName("Teste Falha de Requisição, e retorno HTTP 404")
-    public void shouldReturn404_WhenFailedRegisteringStatus() throws Exception {
-    	Status Statuse = new Status("{ \"name\": \"Alta\" }")
+    public void shouldReturn404_WhenFailedRegisteringInventory() throws Exception {
+    	Inventory Inventorye = new Inventory("{ \"name\": \"Alta\" }")
     	.statusCode(HttpStatus.NOT_FOUND.value());
     }
 	
@@ -69,26 +76,28 @@ public class StatusTest {
     @Order(3) @RepeatedTest(1)
     @SuppressWarnings("unused")
     @DisplayName("Teste Falha de Requisição, e retorno HTTP 500")
-    public void shouldReturn500_WhenFailedRegisteringStatus() throws Exception {
-    	Status status = new Status("{ \"name\": \"Alta\" }")
+    public void shouldReturn500_WhenFailedRegisteringInventory() throws Exception {
+    	Inventory Inventorye = new Inventory("{ \"name\": \"Alta\" }")
     	.statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
-
+	
     @Test
+    @Disabled
     @Order(4) @RepeatedTest(1)
-    @DisplayName("Teste de Cadastro de Statuse")
-	public void registrationStatus() throws Exception {
-		Status Statuse = new Status();
-		repository.save(Statuse)
+    @DisplayName("Teste de Cadastro de Inventorye")
+	public void registrationInventory() throws Exception {
+		Inventory Inventorye = new Inventory();
+		repository.save(Inventorye)
         .statusCode(HttpStatus.CREATED.value());
-		assertNotNull(Statuse);
+		assertNotNull(Inventorye);
 	}
     
     @Test
+    @Disabled
     @Order(5) @RepeatedTest(1)
-    @DisplayName("Teste de Remoção de Statuse")
-    public void shouldDeleteStatusById() throws Exception {
-    	shouldDeleteStatusById();
+    @DisplayName("Teste de Remoção de Inventorye")
+    public void shouldDeleteInventoryById() throws Exception {
+    	shouldDeleteInventoryById();
         mockMvc.perform(MockMvcRequestBuilders
         .delete("/{id}", 1L))
         .andExpect(status()

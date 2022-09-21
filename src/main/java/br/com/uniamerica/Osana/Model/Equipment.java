@@ -24,6 +24,18 @@ public class Equipment {
     @ManyToMany(fetch = FetchType.EAGER)
     Set<OS> os;
 
+	public Equipment(long l, String string, String string2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Equipment(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Equipment() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setName(String name2) {
 		// TODO Auto-generated method stub
 		
@@ -45,6 +57,16 @@ public class Equipment {
 	}
 
 	public String getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setId(long l, String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Equipment statusCode(int value) {
 		// TODO Auto-generated method stub
 		return null;
 	}

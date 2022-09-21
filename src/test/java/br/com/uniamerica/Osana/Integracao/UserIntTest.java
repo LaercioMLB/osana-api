@@ -19,14 +19,14 @@ import java.net.URI;
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UserTests {
+public class UserIntTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     private String validToken;
 
-    public UserTests() {
+    public UserIntTest() {
     }
 
     @BeforeEach
