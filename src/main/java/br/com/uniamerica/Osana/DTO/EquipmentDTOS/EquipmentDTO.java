@@ -12,8 +12,11 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SuppressWarnings("unused")
 public class EquipmentDTO implements Serializable {
-    private Long id;
+	private static final long serialVersionUID = 502302572551517686L;
+	
+	private Long id;
     private String name;
     private String model;
 

@@ -8,8 +8,8 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
 
+@SuppressWarnings("unused")
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -30,4 +30,8 @@ public class NewInventoryDTO {
 
         return updateInventory;
     }
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

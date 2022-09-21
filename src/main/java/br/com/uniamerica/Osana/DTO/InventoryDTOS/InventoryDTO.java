@@ -7,13 +7,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Map;
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SuppressWarnings("unused")
 public class InventoryDTO implements Serializable {
-    private Long id;
+	private static final long serialVersionUID = -142325761316440847L;
+	
+	private Map<String, ?> id;
     private String name;
 
 

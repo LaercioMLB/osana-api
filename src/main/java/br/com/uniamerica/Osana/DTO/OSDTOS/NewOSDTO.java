@@ -2,7 +2,6 @@ package br.com.uniamerica.Osana.DTO.OSDTOS;
 
 import br.com.uniamerica.Osana.Model.*;
 import br.com.uniamerica.Osana.Repository.OSRepository;
-import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,17 +34,43 @@ public class NewOSDTO {
     public OS toModel(){
         OS os = new OS();
         os.setMotive(getMotive());
-        os.setObs(getObs());
+        os.setObs(getClass());
         os.setDevolution(getDevolution());
         os.setDateOS(getDateOS());
         os.setStatus(getStatus());
         os.setPriority(getPriority());
         os.setTypeServices(getTypeServices());
-        os.setClient(getClient());
+        os.setClient(getClass());
 
         return os;
     }
-    public OS updatedOS(OS updateOS, OSRepository osRepository){
+    
+    private Object getTypeServices() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Object getPriority() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Object getStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Object getDateOS() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Object getDevolution() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public OS updatedOS(OS updateOS, OSRepository osRepository){
         updateOS.setMotive(this.motive);
         updateOS.setObs(this.obs);
         updateOS.setDevolution(this.devolution);
@@ -56,4 +81,8 @@ public class NewOSDTO {
         updateOS.setClient(this.client);
         return updateOS;
     }
+	public String getMotive() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

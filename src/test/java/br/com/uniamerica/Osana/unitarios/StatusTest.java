@@ -1,4 +1,4 @@
-package br.com.uniamerica.Osana;
+package br.com.uniamerica.Osana.unitarios;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,59 +18,58 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.uniamerica.Osana.Model.Client;
-import br.com.uniamerica.Osana.Repository.ClientRepository;
+import br.com.uniamerica.Osana.Model.Status;
+import br.com.uniamerica.Osana.Repository.StatusRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@AutoConfigureTestDatabase(
-		connection = EmbeddedDatabaseConnection.H2)
-public class ClientTest {
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+public class StatusTest {
 	
 	@Mock
 	@Autowired
-	private ClientRepository repository;
+	private StatusRepository repository;
 	
 	@Test
 	@DisplayName("Teste da requisição POST")
-	public void saveClient() throws Exception {
-		Client Cliente = new Client(1L, "Ana Carolina", "true", "12345678");
-		repository.save(Cliente);
-		assertNotNull(Cliente);
+	public void saveStatus() throws Exception {
+		Status Statuse = new Status(1L, "Ana Carolina");
+		repository.save(Statuse);
+		assertNotNull(Statuse);
 	}
 	
 	@Test
 	@DisplayName("Teste da requisição GET")
-	public void findByClient () throws Exception {
-		Client Cliente1 = new Client
-		(1L, "Ana Carolina", "true", "12345678");
-		Client Cliente2 = new Client
-		(1L, "Bruno Douglas", "true", "12345678");
-		List<Client> Clientes = new ArrayList<>();
-		Clientes.add(Cliente1);
-		Clientes.add(Cliente2);
+	public void findByStatus () throws Exception {
+		Status Status1 = new Status
+		(1L, "Ana Carolina");
+		Status Status2 = new Status
+		(1L, "Ana Carolina");
+		List<Status> Statuses = new ArrayList<>();
+		Statuses.add(Status1);
+		Statuses.add(Status2);
 	}
 	
 	@Test
 	@DisplayName("Teste da requisição UPDATE")
-	public void updateClient () throws Exception {
+	public void updateStatus () throws Exception {
 		String name = "Ana Carolina";
-		Client Membro = new Client(1L, "Ana Carolina", "true", "12345678");
+		Status Membro = new Status(1L, "Ana Carolina");
 		repository.save(Membro);
-		Client cliente = repository.findById(1L).get();
-		cliente.setName(name);
-		Client liga = repository.save(cliente);
+		Status Statuse = repository.findById(1L).get();
+		Statuse.setName(name);
+		Status liga = repository.save(Statuse);
 		assertEquals(liga.getName(),name);
 	}
 	
 	@Test
 	@DisplayName("Teste da requisição DELETE")
-	public void deleteClient() throws Exception {
-		Client Cliente = new Client(1L, "Ana Carolina", "true", "12345678");
-		repository.save(Cliente);
-		Long id = Cliente .getId();
+	public void deleteStatus() throws Exception {
+		Status Statuse = new Status(1L, "Ana Carolina");
+		repository.save(Statuse);
+		Long id = Statuse .getId();
 		boolean cli1 = repository.findById(id).isPresent();
 		repository.deleteById(id);
 		boolean cli2 = repository.findById(id).isPresent();

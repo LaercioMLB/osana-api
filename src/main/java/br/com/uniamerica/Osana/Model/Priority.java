@@ -20,6 +20,52 @@ public class Priority {
     private String name;
 
 
-    public Priority(Long idPriority) {
+    public Priority(String string) {
     }
+
+
+	public Priority(long l, String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Priority() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public void setName(String name2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public Object getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object builder() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public void setId(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public Priority statusCode(int value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

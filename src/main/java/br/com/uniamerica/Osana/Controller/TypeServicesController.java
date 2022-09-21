@@ -4,7 +4,6 @@ import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.NewTypeServicesDTO;
 import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.TypeServicesDTO;
 import br.com.uniamerica.Osana.Model.TypeServices;
 import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
-import org.apache.tomcat.util.net.openssl.OpenSSLConf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

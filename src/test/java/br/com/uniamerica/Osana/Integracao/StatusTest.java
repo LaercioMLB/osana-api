@@ -1,12 +1,11 @@
 package br.com.uniamerica.Osana.Integracao;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -26,22 +25,22 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import br.com.uniamerica.Osana.Model.Client;
-import br.com.uniamerica.Osana.Repository.ClientRepository;
+import br.com.uniamerica.Osana.Model.Status;
+import br.com.uniamerica.Osana.Repository.StatusRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class ClientIntTest {
+public class StatusTest {
 	
 	@Autowired
     private MockMvc mockMvc;
 
 	@Mock
 	@Autowired
-	private ClientRepository repository;
+	private StatusRepository repository;
 	
 	@Before
 	public void setUp() {
@@ -52,8 +51,8 @@ public class ClientIntTest {
     @Order(1) @RepeatedTest(1)
     @SuppressWarnings("unused")
     @DisplayName("Teste de Sucesso de Requisição, e retorno HTTP 201")
-    public void shouldReturn201_WhenRegisteringClient() throws Exception {
-    	Client cliente = new Client("{ \"name\": \"Ana Carolina\" }")
+    public void shouldReturn201_WhenRegisteringStatus() throws Exception {
+    	Status Statuse = new Status("{ \"name\": \"Ana Carolina\" }")
     	.statusCode(HttpStatus.CREATED.value());
     }
 	
@@ -61,8 +60,8 @@ public class ClientIntTest {
     @Order(2) @RepeatedTest(1)
     @SuppressWarnings("unused")
     @DisplayName("Teste Falha de Requisição, e retorno HTTP 404")
-    public void shouldReturn404_WhenFailedRegisteringClient() throws Exception {
-    	Client cliente = new Client("{ \"name\": \"Ana Carolina\" }")
+    public void shouldReturn404_WhenFailedRegisteringStatus() throws Exception {
+    	Status Statuse = new Status("{ \"name\": \"Alta\" }")
     	.statusCode(HttpStatus.NOT_FOUND.value());
     }
 	
@@ -70,38 +69,26 @@ public class ClientIntTest {
     @Order(3) @RepeatedTest(1)
     @SuppressWarnings("unused")
     @DisplayName("Teste Falha de Requisição, e retorno HTTP 500")
-    public void shouldReturn500_WhenFailedRegisteringClient() throws Exception {
-    	Client cliente = new Client("{ \"name\": \"Ana Carolina\" }")
+    public void shouldReturn500_WhenFailedRegisteringStatus() throws Exception {
+    	Status status = new Status("{ \"name\": \"Alta\" }")
     	.statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
-	
-    @Test
-    @Order(4) @RepeatedTest(1)
-    @SuppressWarnings("unused")
-    @DisplayName("Teste Validação de CNPJ")
-    public void verify_WhenCnpjIsValid() throws Exception {
-        Client cliente = new Client(1L, "Ana Carolina", "true", "564654654654")
-        .statusCode(HttpStatus.CREATED.value());
-		assertTrue(cliente);
-    } private void assertTrue(Client cliente) {}
 
     @Test
-    @Disabled
-    @Order(5) @RepeatedTest(1)
-    @DisplayName("Teste de Cadastro de Cliente")
-	public void registrationClient() throws Exception {
-		Client Cliente = new Client();
-		repository.save(Cliente)
+    @Order(4) @RepeatedTest(1)
+    @DisplayName("Teste de Cadastro de Statuse")
+	public void registrationStatus() throws Exception {
+		Status Statuse = new Status();
+		repository.save(Statuse)
         .statusCode(HttpStatus.CREATED.value());
-		assertNotNull(Cliente);
+		assertNotNull(Statuse);
 	}
     
     @Test
-    @Disabled
-    @Order(6) @RepeatedTest(1)
-    @DisplayName("Teste de Remoção de Cliente")
-    public void shouldDeleteClientById() throws Exception {
-    	shouldDeleteClientById();
+    @Order(5) @RepeatedTest(1)
+    @DisplayName("Teste de Remoção de Statuse")
+    public void shouldDeleteStatusById() throws Exception {
+    	shouldDeleteStatusById();
         mockMvc.perform(MockMvcRequestBuilders
         .delete("/{id}", 1L))
         .andExpect(status()

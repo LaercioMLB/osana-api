@@ -12,8 +12,11 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SuppressWarnings("unused")
 public class OSDTO implements Serializable {
-    private Long idOS;
+	private static final long serialVersionUID = 1603970066821872372L;
+	
+	private Long idOS;
     private String motive;
     private String obs;
     private Date devolution;

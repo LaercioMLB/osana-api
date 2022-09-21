@@ -38,5 +38,14 @@ public class Status {
         this.name = name;
     }
 
+	public Status(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Status statusCode(int value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

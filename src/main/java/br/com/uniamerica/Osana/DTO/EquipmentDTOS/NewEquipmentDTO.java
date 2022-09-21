@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -26,10 +25,19 @@ public class NewEquipmentDTO {
 
         return equipment;
     }
-    public Equipment updatedEquipment(Equipment updateEquiment, EquipmentRepository EquipmentRepository){
+    private String getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
+	public Equipment updatedEquipment(Equipment updateEquiment, EquipmentRepository EquipmentRepository){
         updateEquiment.setName(this.name);
         updateEquiment.setModel(this.model);
 
         return updateEquiment;
     }
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
