@@ -1,59 +1,30 @@
 package br.com.uniamerica.Osana.DTO.ClientDTOS;
 
-import java.util.Optional;
+import br.com.uniamerica.Osana.Model.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import br.com.uniamerica.Osana.Model.Client;
-
-public class ClientDTO {
-	
+import java.io.Serializable;
+import java.util.Date;
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ClientDTO implements Serializable {
 	private Long id;
 	private String name;
 	private String contract;
 	private String cnpj;
-	
-	public ClientDTO() {		
-	}
 
-	public ClientDTO(Client entity) {
-		this.id = entity.getId();
-		this.name = entity.getName();
-		this.contract = entity.getContract();
-		this.cnpj = entity.getCnpj();
-	}
 
-	public ClientDTO(Optional<Client> findById) {
-		// TODO Auto-generated constructor stub
-	}
 
-	public Long getId() {
-		return id;
-	}
+	public ClientDTO(Client client){
+		id = client.getId();
+		name = client.getName();
+		contract = client.getContract();
+		cnpj = client.getCnpj();
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getContract() {
-		return contract;
-	}
-
-	public void setContract(String contract) {
-		this.contract = contract;
-	}
-
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
 	}
 }

@@ -7,7 +7,7 @@ INSERT INTO ROLE(name) VALUES('ROLE_TECNICO');
 INSERT INTO USUARIO_ROLES(usuario_id, roles_id) VALUES(1,1);
 INSERT INTO USUARIO_ROLES(usuario_id, roles_id) VALUES(2,2);
 
-INSERT INTO STATUS(id, name) VALUES(1, 'CHECKIN');
+INSERT INTO STATUS(id_status, name) VALUES(1, 'CHECKIN');
 
 INSERT INTO PRIORITY(id_priority, name) VALUES(1, 'alto');
 
