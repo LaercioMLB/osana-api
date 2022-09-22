@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/inventory")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class InventoryController {
 
     @Autowired

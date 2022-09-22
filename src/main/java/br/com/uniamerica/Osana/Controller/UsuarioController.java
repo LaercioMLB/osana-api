@@ -8,6 +8,7 @@ import br.com.uniamerica.Osana.Model.Usuario;
 import br.com.uniamerica.Osana.Repository.RoleRepository;
 import br.com.uniamerica.Osana.Repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +16,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class UsuarioController {
 
     @Autowired
@@ -34,7 +35,7 @@ public class UsuarioController {
     public ResponseEntity<List<UsuarioDTO>> findAllUsers(){
         List<Usuario> listUSers = usuarioRepository.findAll();
         List<UsuarioDTO> listUSersDTO = UsuarioDTO.convert(listUSers);
-        return ResponseEntity.ok().body(listUSersDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(listUSersDTO);
     }
 
     @GetMapping("/{id}")
@@ -42,14 +43,13 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDetailedDTO> findUserId(@PathVariable Long id){
         Optional<Usuario> user = usuarioRepository.findById(id);
         if (user.isPresent()){
-            return ResponseEntity.ok(new UsuarioDetailedDTO(user.get()));
+            return ResponseEntity.status(HttpStatus.OK).body(new UsuarioDetailedDTO(user.get()));
         }else{
             return ResponseEntity.notFound().build();
         }
     }
 
-    @PostMapping
-    @Transactional
+    @PostMapping @Transactional
     @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<?> createUser(@RequestBody @Valid UsuarioForm form, UriComponentsBuilder uriComponentsBuilder){
         Optional<Usuario> existsUser = usuarioRepository.findByUsername(form.getUsername());
@@ -61,12 +61,10 @@ public class UsuarioController {
             return ResponseEntity.badRequest().build();
         }
         usuarioRepository.save(user);
-        URI uri = uriComponentsBuilder.path("/users/{id}").buildAndExpand(user.getId()).toUri();
-        return ResponseEntity.created(uri).body(new UsuarioDTO(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new UsuarioDTO(user));
     }
 
-    @PutMapping("/{id}")
-    @Transactional
+    @PutMapping("/{id}") @Transactional
     @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<UsuarioDetailedDTO> updateUser(@PathVariable Long id, @RequestBody @Valid UpdateUsuarioForm form){
         Optional<Usuario> user = usuarioRepository.findById(id);
@@ -74,18 +72,17 @@ public class UsuarioController {
             Usuario newUser = form.updateUser(user.get(), roleRepository, usuarioRepository);
             return ResponseEntity.ok(new UsuarioDetailedDTO(newUser));
         }else{
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.OK).build();
         }
     }
 
-    @DeleteMapping("/{id}")
-    @Transactional
+    @DeleteMapping("/{id}") @Transactional
     @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<?> deleteUser(@PathVariable Long id){
         Optional<Usuario> user = usuarioRepository.findById(id);
         if (user.isPresent()){
             usuarioRepository.deleteById(id);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.status(HttpStatus.OK).build();
         }else{
             return ResponseEntity.notFound().build();
         }

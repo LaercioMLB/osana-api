@@ -6,19 +6,30 @@ import br.com.uniamerica.Osana.Model.Usuario;
 import br.com.uniamerica.Osana.Repository.RoleRepository;
 import br.com.uniamerica.Osana.Repository.UsuarioRepository;
 import org.junit.jupiter.api.*;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
 
-@DataJpaTest
+@SpringBootTest
+@AutoConfigureMockMvc
+@RunWith(SpringRunner.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class UserTest {
 
+	@Mock
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+	@Mock
     @Autowired
     private RoleRepository roleRepository;
 
@@ -63,11 +74,9 @@ public class UserTest {
         boolean exists = false;
         Usuario newUser = new Usuario("bobzinho", "desenv gestor", "bob@gmail.com", "123456", new Role("ROLE_GESTOR"));
         Optional<Usuario> user = usuarioRepository.findByUsername(newUser.getUsername());
-        if (user.isPresent()){
-            exists = true;
-        }
-        Assertions.assertEquals(true, exists);
-        Assertions.assertTrue(exists);
+        if (user.isPresent()){ exists = true;
+        } Assertions.assertEquals(true, exists);
+          Assertions.assertTrue(exists);
     }
 
     @Test

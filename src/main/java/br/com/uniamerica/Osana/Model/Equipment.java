@@ -36,6 +36,10 @@ public class Equipment {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Equipment(long l, String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setName(String name2) {
 		// TODO Auto-generated method stub
 		
