@@ -33,7 +33,11 @@ public class Usuario implements UserDetails {
         this.id = id;
     }
 
-    @Override
+    public Usuario(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -120,4 +124,9 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+	public Usuario statusCode(int value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
