@@ -34,7 +34,7 @@ public class NewOSDTO implements Serializable {
     private Long idEquipment;
     @NotBlank(message = "Client is Required")
     private Long idClient;
-    @NotBlank(message = "User is Required")
+    @NotBlank(message = "User is Requerido")
     private Long idUsuario;
     //
     public OS toModel(UsuarioRepository usuarioRepository, StatusRepository statusRepository, EquipmentRepository equipmentRepository,TypeServicesRepository typeServicesRepository,PriorityRepository priorityRepository, ClientRepository clientRepository){
