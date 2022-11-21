@@ -1,6 +1,7 @@
 package br.com.uniamerica.Osana.Controller;
 
 import br.com.uniamerica.Osana.Config.Form.UserForm.LoginForm;
+import br.com.uniamerica.Osana.Config.RegraNegocioException;
 import br.com.uniamerica.Osana.Config.security.TokenService;
 import br.com.uniamerica.Osana.DTO.OSDTOS.OSDTO;
 import br.com.uniamerica.Osana.DTO.UserDTOS.TokenDTO;
@@ -54,7 +55,7 @@ public class AuthController {
             UsuarioDTO user = buscaUsuario(form.getUsername());
             return ResponseEntity.ok(new TokenDTO(token, "Bearer", user));
         }catch (AuthenticationException e){
-            return ResponseEntity.badRequest().build();
+            throw new RegraNegocioException("Usuário não existe, Confira os dados do Formulário");
         }
     }
 
