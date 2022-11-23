@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @RequiredArgsConstructor
@@ -15,18 +15,20 @@ import java.util.Date;
 @Builder
 @Data
 public class NewInventoryDTO {
-    @NotBlank(message = "Name is Required")
+    @NotNull(message = "Name is Required")
     private String name;
-    private String model;
+    private Integer quantity;
 
     public Inventory toModel(){
         Inventory inventory = new Inventory();
-        inventory.setName(getName());
+        inventory.setName(this.name);
+        inventory.setQuantity(this.quantity);
 
         return inventory;
     }
     public Inventory updatedInventory(Inventory updateInventory, InventoryRepository inventoryRepository){
         updateInventory.setName(this.name);
+        updateInventory.setQuantity(this.quantity);
 
         return updateInventory;
     }

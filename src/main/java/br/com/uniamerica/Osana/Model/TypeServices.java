@@ -1,10 +1,11 @@
 package br.com.uniamerica.Osana.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class TypeServices {
+public class TypeServices implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

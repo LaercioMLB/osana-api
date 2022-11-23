@@ -3,13 +3,13 @@ package br.com.uniamerica.Osana.DTO.TypeServicesDTOS;
 import br.com.uniamerica.Osana.Model.TypeServices;
 import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
 public class NewTypeServicesDTO{
-//    @NotBlank(message = "Type Services is required")
+//    @NotNull(message = "Type Services is required")
     @NotNull
     @NotEmpty
     private String services;

@@ -6,3 +6,18 @@ INSERT INTO ROLE(name) VALUES('ROLE_TECNICO');
 
 INSERT INTO USUARIO_ROLES(usuario_id, roles_id) VALUES(1,1);
 INSERT INTO USUARIO_ROLES(usuario_id, roles_id) VALUES(2,2);
+
+INSERT INTO STATUS(name) VALUES('CHECKIN');
+
+INSERT INTO PRIORITY(name) VALUES('alto');
+
+INSERT INTO CLIENT(cnpj, contract, name) VALUES('11212996950/0001', 'no conctract', 'Laércio Bubiak');
+
+INSERT INTO TYPE_SERVICES(services) VALUES('blablablablublu');
+
+INSERT INTO EQUIPMENT(model, name) VALUES('blablablablublu', 'skfjskjs');
+INSERT INTO EQUIPMENT(model, name) VALUES('blablablablublsssu', 'skfjskjsss');
+
+INSERT INTO INVENTORY(name, quantity) VALUES('fonte', 10);
+INSERT INTO INVENTORY(name, quantity) VALUES('fonte notebook', 25);
+INSERT INTO INVENTORY(name, quantity) VALUES('fonte computador', 56);

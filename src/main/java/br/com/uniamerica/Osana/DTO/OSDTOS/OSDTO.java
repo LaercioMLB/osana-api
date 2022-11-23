@@ -1,13 +1,21 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
 
+import br.com.uniamerica.Osana.DTO.UserDTOS.UsuarioDTO;
 import br.com.uniamerica.Osana.Model.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Builder
 @Data
 @NoArgsConstructor
@@ -18,11 +26,15 @@ public class OSDTO implements Serializable {
     private String obs;
     private Date devolution;
     private Date dateOS;
-    private Usuario usuario;
-    private Status status;
+    private UsuarioDTO usuario;
+    private Status idStatus;
     private Priority priority;
     private TypeServices typeServices;
     private Client client;
+    private Set<Equipment> equipment;
+    private Set<OutputInventory> outputInventories;
+
+    private static List<OSDTO> osDTOS;
 
 
     public OSDTO(OS os){
@@ -31,10 +43,19 @@ public class OSDTO implements Serializable {
         obs = os.getObs();
         devolution = os.getDevolution();
         dateOS = os.getDateOS();
-        usuario = os.getUsuario();
-        status = os.getStatus();
+        usuario = new UsuarioDTO(os.getUsuario());
+        idStatus = os.getStatus();
         priority = os.getPriority();
         typeServices = os.getTypeServices();
         client = os.getClient();
+        equipment = os.getEquipment();
+        outputInventories = os.getOutputInventories();
     }
+
+    public static List<OSDTO> convert(List<OS> osList) {
+        osDTOS = new ArrayList<>();
+        osDTOS.addAll(osList.stream().map(OSDTO::new).collect(Collectors.toList()));
+        return osDTOS;
+    }
+
 }

@@ -31,4 +31,10 @@ public class ErrorValidationHandler {
 		});
 		return dto;
 	}
+
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(RegraNegocioException.class)
+	public String handleRegraException(RegraNegocioException exception) {
+		return exception.getMessage();
+	}
 }
