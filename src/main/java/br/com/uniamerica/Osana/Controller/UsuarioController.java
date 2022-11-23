@@ -8,6 +8,7 @@ import br.com.uniamerica.Osana.Model.Usuario;
 import br.com.uniamerica.Osana.Repository.RoleRepository;
 import br.com.uniamerica.Osana.Repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,15 @@ public class UsuarioController {
     @Autowired
     private RoleRepository roleRepository;
 
+    @GetMapping("/filterByUsername")
+    public ResponseEntity<UsuarioDetailedDTO> findUserByUsername(@Param("username") String username){
+        Optional<Usuario> existsUser = usuarioRepository.findByUsername(username);
+        if (existsUser.isPresent()){
+            return ResponseEntity.ok(new UsuarioDetailedDTO(existsUser.get()));
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
     @GetMapping
     @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<List<UsuarioDTO>> findAllUsers(){
