@@ -6,6 +6,7 @@ import br.com.uniamerica.Osana.DTO.InventoryDTOS.InventoryToOSDTO;
 import br.com.uniamerica.Osana.DTO.OSDTOS.NewOSDTO;
 import br.com.uniamerica.Osana.DTO.OSDTOS.OSDTO;
 import br.com.uniamerica.Osana.DTO.UserDTOS.UsuarioDTO;
+import br.com.uniamerica.Osana.DTO.UserDTOS.UsuarioDetailedDTO;
 import br.com.uniamerica.Osana.Model.*;
 import br.com.uniamerica.Osana.Repository.*;
 import br.com.uniamerica.Osana.Services.OSservice;
@@ -34,6 +35,9 @@ public class OSController {
     @Autowired
     private OutputInventoryRepository outputInventoryRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     @PostMapping
     @Transactional
     public ResponseEntity<?> createOS(@RequestBody @Valid NewOSDTO newOSDTO, UriComponentsBuilder uriComponentsBuilder){
@@ -53,6 +57,17 @@ public class OSController {
         Optional<OS> existsOS = osRepository.findById(id);
         if(existsOS.isPresent()){
             return ResponseEntity.ok(new OSDTO(existsOS.get()));
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/findOSByUser/{id}")
+    public ResponseEntity<List<OS>> findOSbyUser(@PathVariable Long id){
+        Optional<Usuario> user = usuarioRepository.findById(id);
+        if (user.isPresent()){
+            List<OS> listOsFind = osRepository.findByUsuario(user.get());
+            return ResponseEntity.ok(listOsFind);
         }else{
             return ResponseEntity.notFound().build();
         }
