@@ -17,7 +17,9 @@ INSERT INTO PRIORITY(name) VALUES('Urgente');
 
 INSERT INTO CLIENT(cnpj, contract, name) VALUES('11212996950/0001', 'no conctract', 'Laércio Bubiak');
 
-INSERT INTO TYPE_SERVICES(services) VALUES('blablablablublu');
+INSERT INTO TYPE_SERVICES(services) VALUES('Pegou Fogo');
+INSERT INTO TYPE_SERVICES(services) VALUES('Arrumação');
+INSERT INTO TYPE_SERVICES(services) VALUES('Troca de Peças');
 
 INSERT INTO EQUIPMENT(model, name) VALUES('KM7895-9', 'Impressora Epson');
 INSERT INTO EQUIPMENT(model, name) VALUES('E180', 'Galaxy Tablet');
