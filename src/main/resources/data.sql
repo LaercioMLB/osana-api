@@ -7,16 +7,20 @@ INSERT INTO ROLE(name) VALUES('ROLE_TECNICO');
 INSERT INTO USUARIO_ROLES(usuario_id, roles_id) VALUES(1,1);
 INSERT INTO USUARIO_ROLES(usuario_id, roles_id) VALUES(2,2);
 
-INSERT INTO STATUS(name) VALUES('CHECKIN');
+INSERT INTO STATUS(name) VALUES('Andamento');
+INSERT INTO STATUS(name) VALUES('Finalizado');
+INSERT INTO STATUS(name) VALUES('Aberto');
 
-INSERT INTO PRIORITY(name) VALUES('alto');
+INSERT INTO PRIORITY(name) VALUES('Alta');
+INSERT INTO PRIORITY(name) VALUES('Baixa');
+INSERT INTO PRIORITY(name) VALUES('Urgente');
 
 INSERT INTO CLIENT(cnpj, contract, name) VALUES('11212996950/0001', 'no conctract', 'Laércio Bubiak');
 
 INSERT INTO TYPE_SERVICES(services) VALUES('blablablablublu');
 
-INSERT INTO EQUIPMENT(model, name) VALUES('blablablablublu', 'skfjskjs');
-INSERT INTO EQUIPMENT(model, name) VALUES('blablablablublsssu', 'skfjskjsss');
+INSERT INTO EQUIPMENT(model, name) VALUES('KM7895-9', 'Impressora Epson');
+INSERT INTO EQUIPMENT(model, name) VALUES('E180', 'Galaxy Tablet');
 
 INSERT INTO INVENTORY(name, quantity) VALUES('fonte', 10);
 INSERT INTO INVENTORY(name, quantity) VALUES('fonte notebook', 25);
