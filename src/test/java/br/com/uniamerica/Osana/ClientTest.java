@@ -36,7 +36,7 @@ public class ClientTest {
 	@Test
 	@DisplayName("Teste da requisição POST")
 	public void saveClient() throws Exception {
-		Client Cliente = new Client(1L, "Ana Carolina", "true", "12345678");
+		Client Cliente = new Client(1L, "Ana Carolina", "Silva", "true", "12345678");
 		repository.save(Cliente);
 		assertNotNull(Cliente);
 	}
@@ -45,9 +45,9 @@ public class ClientTest {
 	@DisplayName("Teste da requisição GET")
 	public void findByClient () throws Exception {
 		Client Cliente1 = new Client
-		(1L, "Ana Carolina", "true", "12345678");
+		(1L, "Ana Carolina", "Silva", "true", "12345678");
 		Client Cliente2 = new Client
-		(1L, "Bruno Douglas", "true", "12345678");
+		(1L, "Bruno Douglas", "Silva", "true", "12345678");
 		List<Client> Clientes = new ArrayList<>();
 		Clientes.add(Cliente1);
 		Clientes.add(Cliente2);
@@ -57,18 +57,21 @@ public class ClientTest {
 	@DisplayName("Teste da requisição UPDATE")
 	public void updateClient () throws Exception {
 		String name = "Ana Carolina";
-		Client Membro = new Client(1L, "Ana Carolina", "true", "12345678");
+		String lastName="Silva";
+		Client Membro = new Client(1L, "Ana Carolina","Silva", "true", "12345678");
 		repository.save(Membro);
 		Client cliente = repository.findById(1L).get();
-		cliente.setName(name);
+		cliente.setFirstName(name);
+		cliente.setLastName(lastName);
 		Client liga = repository.save(cliente);
-		assertEquals(liga.getName(),name);
+		assertEquals(liga.getFirstName(),name);
+		assertEquals(liga.getLastName(),lastName);
 	}
 	
 	@Test
 	@DisplayName("Teste da requisição DELETE")
 	public void deleteClient() throws Exception {
-		Client Cliente = new Client(1L, "Ana Carolina", "true", "12345678");
+		Client Cliente = new Client(1L, "Ana Carolina", "Siva", "true", "12345678");
 		repository.save(Cliente);
 		Long id = Cliente .getId();
 		boolean cli1 = repository.findById(id).isPresent();

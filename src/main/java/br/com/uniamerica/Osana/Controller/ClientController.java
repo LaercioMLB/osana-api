@@ -25,7 +25,7 @@ public class ClientController {
     @PostMapping
     @Transactional
     public ResponseEntity<?> createClient(@RequestBody @Valid NewClientDTO newClientDTO, UriComponentsBuilder uriComponentsBuilder){
-        Optional<Client> existsClient = clientRepository.findByName(newClientDTO.getName());
+        Optional<Client> existsClient = clientRepository.findByFirstName(newClientDTO.getFirstName());
         if (existsClient.isPresent()){
             return ResponseEntity.badRequest().body("Client already exists");
         }

@@ -64,7 +64,7 @@ public class ClientIntTest {
     @SuppressWarnings("unused")
     @DisplayName("Teste Validação de CNPJ")
     public void verify_WhenCnpjIsValid() throws Exception {
-        Client cliente = new Client(1L, "Ana Carolina", "true", "564654654654")
+        Client cliente = new Client(1L, "Ana Carolina","Silva", "true", "564654654654")
         .statusCode(HttpStatus.CREATED.value());
 		assertTrue(cliente);
     } private void assertTrue(Client cliente) {}
