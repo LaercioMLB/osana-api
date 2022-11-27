@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-import br.com.uniamerica.Osana.Repository.ClientRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -52,4 +51,5 @@ public class Client implements Serializable {
 	@NotEmpty(message = "O CNPJ é necessario")
 	@Column(name = "cnpj", length = 45)
 	private String cnpj;
+
 }
