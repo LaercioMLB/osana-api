@@ -15,7 +15,7 @@ INSERT INTO PRIORITY(name) VALUES('Alta');
 INSERT INTO PRIORITY(name) VALUES('Baixa');
 INSERT INTO PRIORITY(name) VALUES('Urgente');
 
-INSERT INTO CLIENT(cnpj, contract, name) VALUES('11212996950/0001', 'no conctract', 'Laércio Bubiak');
+INSERT INTO CLIENT(cnpj, contract, name) VALUES('11212996950/0001', 'false', 'Laércio Bubiak');
 
 INSERT INTO TYPE_SERVICES(services) VALUES('Pegou Fogo');
 INSERT INTO TYPE_SERVICES(services) VALUES('Arrumação');
