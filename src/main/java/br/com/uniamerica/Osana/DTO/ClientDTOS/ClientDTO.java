@@ -7,7 +7,10 @@ import br.com.uniamerica.Osana.Model.Client;
 public class ClientDTO {
 	
 	private Long id;
-	private String name;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String phone;
 	private String contract;
 	private String cnpj;
 	
@@ -16,7 +19,10 @@ public class ClientDTO {
 
 	public ClientDTO(Client entity) {
 		this.id = entity.getId();
-		this.name = entity.getName();
+		this.firstName = entity.getFirstName();
+		this.lastName=entity.getLastName();
+		this.email=entity.getEmail();
+		this.phone=entity.getPhone();
 		this.contract = entity.getContract();
 		this.cnpj = entity.getCnpj();
 	}
@@ -33,13 +39,25 @@ public class ClientDTO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getLastName(){return lastName;}
+
+	public String getEmail(){return email;}
+
+	public String getPhone(){return phone;}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
+
+	public void setLastName(String lastName){this.lastName = lastName;}
+
+	public void setEmail(String email){this.email = email;}
+
+	public void setPhone(String phone){this.phone = phone;}
 
 	public String getContract() {
 		return contract;

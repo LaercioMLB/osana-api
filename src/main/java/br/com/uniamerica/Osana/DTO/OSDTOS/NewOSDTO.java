@@ -1,59 +1,50 @@
 package br.com.uniamerica.Osana.DTO.OSDTOS;
 
+import br.com.uniamerica.Osana.DTO.InventoryDTOS.InventoryDTO;
+import br.com.uniamerica.Osana.DTO.InventoryDTOS.InventoryToOSDTO;
 import br.com.uniamerica.Osana.Model.*;
-import br.com.uniamerica.Osana.Repository.OSRepository;
-import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
+import br.com.uniamerica.Osana.Repository.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
 @Data
-public class NewOSDTO {
-    @NotBlank(message = "Motive is Required")
+public class NewOSDTO implements Serializable {
+    @NotNull()
     private String motive;
     private String obs;
-    @NotBlank(message = "devolution is Required")
     private Date devolution;
-    @NotBlank(message = "dateOS is Required")
-    private Date dateOS;
-    @NotBlank(message = "Priority is Required")
-    private Priority priority;
-    @NotBlank(message = "Status is Required")
-    private Status status;
-    @NotBlank(message = "Type Service is Required")
-    private TypeServices typeServices;
-    @NotBlank(message = "Client is Required")
-    private Client client;
-    //
-    public OS toModel(){
+    @NotNull()
+    private Integer idPriority;
+    private Integer idStatus;
+    @NotNull()
+    private Integer idTypeServices;
+    @NotNull()
+    private Integer idClient;
+    @NotNull()
+    private Integer idUsuario;
+
+    private Set<Integer> equipaments;
+    private HashSet<InventoryToOSDTO> inventories;
+
+    public OS toModel(Set<Equipment> lista_obj_equipament){
         OS os = new OS();
-        os.setMotive(getMotive());
-        os.setObs(getObs());
-        os.setDevolution(getDevolution());
-        os.setDateOS(getDateOS());
-        os.setStatus(getStatus());
-        os.setPriority(getPriority());
-        os.setTypeServices(getTypeServices());
-        os.setClient(getClient());
+        os.setMotive(this.motive);
+        os.setObs(this.obs);
+        os.setDevolution(this.devolution);
+        os.setEquipment(lista_obj_equipament);
 
         return os;
-    }
-    public OS updatedOS(OS updateOS, OSRepository osRepository){
-        updateOS.setMotive(this.motive);
-        updateOS.setObs(this.obs);
-        updateOS.setDevolution(this.devolution);
-        updateOS.setDateOS(this.dateOS);
-        updateOS.setStatus(this.status);
-        updateOS.setPriority(this.priority);
-        updateOS.setTypeServices(this.typeServices);
-        updateOS.setClient(this.client);
-        return updateOS;
     }
 }

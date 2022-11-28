@@ -1,26 +1,23 @@
 package br.com.uniamerica.Osana.DTO.InventoryDTOS;
 
-import br.com.uniamerica.Osana.Model.*;
+import br.com.uniamerica.Osana.Model.Inventory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
+
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class InventoryDTO implements Serializable {
+public class InventoryToOSDTO implements Serializable {
     private Long id;
-    private String name;
-
     private Integer quantity;
 
-    public InventoryDTO(Inventory inventory){
+    public InventoryToOSDTO(Inventory inventory){
         id = inventory.getId();
-        name = inventory.getName();
         quantity = inventory.getQuantity();
     }
 }
