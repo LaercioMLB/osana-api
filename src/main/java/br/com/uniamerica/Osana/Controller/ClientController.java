@@ -5,6 +5,8 @@ import br.com.uniamerica.Osana.DTO.ClientDTOS.NewClientDTO;
 import br.com.uniamerica.Osana.Model.Client;
 import br.com.uniamerica.Osana.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -36,10 +38,11 @@ public class ClientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Client>> findAllClients(){
-        List<Client> listClient = clientRepository.findAll();
+    public ResponseEntity<Page<Client>> findAllClients(Pageable pageable){
+        Page<Client> listClient = clientRepository.findAll(pageable);
         return ResponseEntity.ok().body(listClient);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<ClientDTO> findClient(@PathVariable Long id){
         Optional<Client> existsClient = clientRepository.findById(id);

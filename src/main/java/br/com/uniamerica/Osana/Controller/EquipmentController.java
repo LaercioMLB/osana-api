@@ -5,6 +5,8 @@ import br.com.uniamerica.Osana.DTO.EquipmentDTOS.NewEquipmentDTO;
 import br.com.uniamerica.Osana.Model.Equipment;
 import br.com.uniamerica.Osana.Repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -36,10 +38,11 @@ public class EquipmentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Equipment>> findAllEquipments(){
-        List<Equipment> listEquipment = equipmentRepository.findAll();
+    public ResponseEntity<Page<Equipment>> findAllEquipments(Pageable pageable){
+        Page<Equipment> listEquipment = equipmentRepository.findAll(pageable);
         return ResponseEntity.ok().body(listEquipment);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<EquipmentDTO> findEquipment(@PathVariable Long id){
         Optional<Equipment> existsEquipment = equipmentRepository.findById(id);

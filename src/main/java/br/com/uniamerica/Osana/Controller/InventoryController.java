@@ -5,6 +5,8 @@ import br.com.uniamerica.Osana.DTO.InventoryDTOS.NewInventoryDTO;
 import br.com.uniamerica.Osana.Model.Inventory;
 import br.com.uniamerica.Osana.Repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -36,10 +38,11 @@ public class InventoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Inventory>> findAllInventory(){
-        List<Inventory> listInventory = inventoryRepository.findAll();
+    public ResponseEntity<Page<Inventory>> findAllInventory(Pageable pageable){
+        Page<Inventory> listInventory = inventoryRepository.findAll(pageable);
         return ResponseEntity.ok().body(listInventory);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<InventoryDTO> findInventory(@PathVariable Long id){
         Optional<Inventory> existsInventory = inventoryRepository.findById(id);
