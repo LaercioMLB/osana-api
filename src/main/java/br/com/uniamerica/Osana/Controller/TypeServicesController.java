@@ -2,6 +2,7 @@ package br.com.uniamerica.Osana.Controller;
 
 import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.NewTypeServicesDTO;
 import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.TypeServicesDTO;
+import br.com.uniamerica.Osana.Model.Inventory;
 import br.com.uniamerica.Osana.Model.TypeServices;
 import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 import org.apache.tomcat.util.net.openssl.OpenSSLConf;
@@ -43,6 +44,7 @@ public class TypeServicesController {
         return ResponseEntity.ok().body(listTypeServices);
     }
 
+    @GetMapping("/findAll")
     public ResponseEntity<List<TypeServices>> findAllTypeServices(){
         List<TypeServices> listTypeServices = typeServicesRepository.findAll();
         return ResponseEntity.ok().body(listTypeServices);

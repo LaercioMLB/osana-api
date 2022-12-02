@@ -43,6 +43,12 @@ public class ClientController {
         return ResponseEntity.ok().body(listClient);
     }
 
+    @GetMapping("/findAll")
+    public ResponseEntity<List<Client>> findAll(){
+        List<Client> listClient = clientRepository.findAll();
+        return ResponseEntity.ok().body(listClient);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ClientDTO> findClient(@PathVariable Long id){
         Optional<Client> existsClient = clientRepository.findById(id);

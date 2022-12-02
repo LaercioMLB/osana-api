@@ -2,6 +2,7 @@ package br.com.uniamerica.Osana.Controller;
 
 import br.com.uniamerica.Osana.DTO.InventoryDTOS.InventoryDTO;
 import br.com.uniamerica.Osana.DTO.InventoryDTOS.NewInventoryDTO;
+import br.com.uniamerica.Osana.Model.Equipment;
 import br.com.uniamerica.Osana.Model.Inventory;
 import br.com.uniamerica.Osana.Repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,12 @@ public class InventoryController {
     @GetMapping
     public ResponseEntity<Page<Inventory>> findAllInventory(Pageable pageable){
         Page<Inventory> listInventory = inventoryRepository.findAll(pageable);
+        return ResponseEntity.ok().body(listInventory);
+    }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<Inventory>> findAll(){
+        List<Inventory> listInventory = inventoryRepository.findAll();
         return ResponseEntity.ok().body(listInventory);
     }
 
