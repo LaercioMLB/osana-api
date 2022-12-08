@@ -2,10 +2,13 @@ package br.com.uniamerica.Osana.Controller;
 
 import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.NewTypeServicesDTO;
 import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.TypeServicesDTO;
+import br.com.uniamerica.Osana.Model.Inventory;
 import br.com.uniamerica.Osana.Model.TypeServices;
 import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 import org.apache.tomcat.util.net.openssl.OpenSSLConf;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -36,10 +39,17 @@ public class TypeServicesController {
     }
 
     @GetMapping
+    public ResponseEntity<Page<TypeServices>> findAll(Pageable pageable){
+        Page<TypeServices> listTypeServices = typeServicesRepository.findAll(pageable);
+        return ResponseEntity.ok().body(listTypeServices);
+    }
+
+    @GetMapping("/findAll")
     public ResponseEntity<List<TypeServices>> findAllTypeServices(){
         List<TypeServices> listTypeServices = typeServicesRepository.findAll();
         return ResponseEntity.ok().body(listTypeServices);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<TypeServicesDTO> findTypeServices(@PathVariable Long id){
         Optional<TypeServices> existsServices = typeServicesRepository.findById(id);
