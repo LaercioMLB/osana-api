@@ -44,6 +44,12 @@ public class EquipmentController {
         return ResponseEntity.ok().body(listEquipment);
     }
 
+    @GetMapping("/findEquipmentByName")
+    public ResponseEntity<Page<Equipment>> findEquipmentByName(@RequestParam(name = "name") String name, Pageable pageable){
+        Page<Equipment> listEquipment = equipmentRepository.findByNameContains(name, pageable);
+        return ResponseEntity.ok().body(listEquipment);
+    }
+
     @GetMapping("/findAll")
     public ResponseEntity<List<Equipment>> findAll(){
         List<Equipment> listEquipment = equipmentRepository.findAll();

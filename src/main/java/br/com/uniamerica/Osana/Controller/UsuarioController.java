@@ -50,6 +50,14 @@ public class UsuarioController {
         return ResponseEntity.ok().body(listUSersDTO);
     }
 
+    @GetMapping("/findByName")
+    @PreAuthorize("hasRole('ROLE_GESTOR')")
+    public ResponseEntity<Page<UsuarioDTO>> findByName(@RequestParam(name = "name") String name){
+        List<Usuario> listUSers = usuarioRepository.findByNameContains(name);
+        Page<UsuarioDTO> listUSersDTO = new PageImpl<>(UsuarioDTO.convert(listUSers));
+        return ResponseEntity.ok().body(listUSersDTO);
+    }
+
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<UsuarioDetailedDTO> findUserId(@PathVariable Long id){

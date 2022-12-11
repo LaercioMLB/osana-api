@@ -2,14 +2,18 @@ package br.com.uniamerica.Osana.Controller;
 
 import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.NewTypeServicesDTO;
 import br.com.uniamerica.Osana.DTO.TypeServicesDTOS.TypeServicesDTO;
+import br.com.uniamerica.Osana.DTO.UserDTOS.UsuarioDTO;
 import br.com.uniamerica.Osana.Model.Inventory;
 import br.com.uniamerica.Osana.Model.TypeServices;
+import br.com.uniamerica.Osana.Model.Usuario;
 import br.com.uniamerica.Osana.Repository.TypeServicesRepository;
 import org.apache.tomcat.util.net.openssl.OpenSSLConf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -41,6 +45,12 @@ public class TypeServicesController {
     @GetMapping
     public ResponseEntity<Page<TypeServices>> findAll(Pageable pageable){
         Page<TypeServices> listTypeServices = typeServicesRepository.findAll(pageable);
+        return ResponseEntity.ok().body(listTypeServices);
+    }
+
+    @GetMapping("/findServiceByName")
+    public ResponseEntity<Page<TypeServices>> findServiceByName(@RequestParam(name = "services") String services, Pageable pageable){
+        Page<TypeServices> listTypeServices = typeServicesRepository.findByServicesContains(services, pageable);
         return ResponseEntity.ok().body(listTypeServices);
     }
 

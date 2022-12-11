@@ -7,6 +7,7 @@ import br.com.uniamerica.Osana.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -46,6 +47,12 @@ public class ClientController {
     @GetMapping("/findAll")
     public ResponseEntity<List<Client>> findAll(){
         List<Client> listClient = clientRepository.findAll();
+        return ResponseEntity.ok().body(listClient);
+    }
+
+    @GetMapping("/clientFindByContract")
+    public ResponseEntity<Page<Client>> findByContract(@RequestParam(name = "contract") String contract, Pageable pageable){
+        Page<Client> listClient = clientRepository.findByContract(contract, pageable);
         return ResponseEntity.ok().body(listClient);
     }
 
