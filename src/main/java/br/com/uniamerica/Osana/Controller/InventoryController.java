@@ -47,7 +47,7 @@ public class InventoryController {
 
     @GetMapping("/findInventoryByName")
     public ResponseEntity<Page<Inventory>> findInventoryByName(@RequestParam(name = "name") String name, Pageable pageable){
-        Page<Inventory> listTypeServices = inventoryRepository.findByNameContains(name, pageable);
+        Page<Inventory> listTypeServices = inventoryRepository.findByNameContainingIgnoreCase(name, pageable);
         return ResponseEntity.ok().body(listTypeServices);
     }
 

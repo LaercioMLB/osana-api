@@ -13,5 +13,5 @@ public interface
 EquipmentRepository extends JpaRepository<Equipment, Long> {
     Optional<Equipment> findByName(String name);
 
-    Page<Equipment> findByNameContains(String name, Pageable pageable);
+    Page<Equipment> findByNameContainingIgnoreCase(String name, Pageable pageable);
 }

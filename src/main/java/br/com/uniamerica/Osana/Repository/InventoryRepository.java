@@ -13,5 +13,5 @@ public interface
 InventoryRepository extends JpaRepository<Inventory, Long> {
     Optional<Inventory> findByName(String name);
 
-    Page<Inventory> findByNameContains(String name, Pageable pageable);
+    Page<Inventory> findByNameContainingIgnoreCase(String name, Pageable pageable);
 }

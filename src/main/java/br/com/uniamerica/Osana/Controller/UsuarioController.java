@@ -53,7 +53,7 @@ public class UsuarioController {
     @GetMapping("/findByName")
     @PreAuthorize("hasRole('ROLE_GESTOR')")
     public ResponseEntity<Page<UsuarioDTO>> findByName(@RequestParam(name = "name") String name){
-        List<Usuario> listUSers = usuarioRepository.findByNameContains(name);
+        List<Usuario> listUSers = usuarioRepository.findByNameContainingIgnoreCase(name);
         Page<UsuarioDTO> listUSersDTO = new PageImpl<>(UsuarioDTO.convert(listUSers));
         return ResponseEntity.ok().body(listUSersDTO);
     }

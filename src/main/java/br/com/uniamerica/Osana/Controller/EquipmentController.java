@@ -46,7 +46,7 @@ public class EquipmentController {
 
     @GetMapping("/findEquipmentByName")
     public ResponseEntity<Page<Equipment>> findEquipmentByName(@RequestParam(name = "name") String name, Pageable pageable){
-        Page<Equipment> listEquipment = equipmentRepository.findByNameContains(name, pageable);
+        Page<Equipment> listEquipment = equipmentRepository.findByNameContainingIgnoreCase(name, pageable);
         return ResponseEntity.ok().body(listEquipment);
     }
 

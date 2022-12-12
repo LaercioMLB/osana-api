@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface TypeServicesRepository extends JpaRepository<TypeServices,Long>{
     Optional<TypeServices> findByServices(String typeServices);
 
-    Page<TypeServices> findByServicesContains(String typeServices, Pageable pageable);
+    Page<TypeServices> findByServicesContainingIgnoreCase(String typeServices, Pageable pageable);
 }

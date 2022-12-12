@@ -50,7 +50,7 @@ public class TypeServicesController {
 
     @GetMapping("/findServiceByName")
     public ResponseEntity<Page<TypeServices>> findServiceByName(@RequestParam(name = "services") String services, Pageable pageable){
-        Page<TypeServices> listTypeServices = typeServicesRepository.findByServicesContains(services, pageable);
+        Page<TypeServices> listTypeServices = typeServicesRepository.findByServicesContainingIgnoreCase(services, pageable);
         return ResponseEntity.ok().body(listTypeServices);
     }
 
