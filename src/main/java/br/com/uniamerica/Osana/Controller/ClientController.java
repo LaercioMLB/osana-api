@@ -3,6 +3,7 @@ package br.com.uniamerica.Osana.Controller;
 import br.com.uniamerica.Osana.DTO.ClientDTOS.ClientDTO;
 import br.com.uniamerica.Osana.DTO.ClientDTOS.NewClientDTO;
 import br.com.uniamerica.Osana.Model.Client;
+import br.com.uniamerica.Osana.Model.OS;
 import br.com.uniamerica.Osana.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -54,6 +55,19 @@ public class ClientController {
     public ResponseEntity<Page<Client>> findByContract(@RequestParam(name = "contract") String contract, Pageable pageable){
         Page<Client> listClient = clientRepository.findByContract(contract, pageable);
         return ResponseEntity.ok().body(listClient);
+    }
+
+    @GetMapping("/filterClient")
+    public ResponseEntity<Page<Client>> filterClient(@RequestParam(name = "cnpj", required = false) String cnpj,
+                                             @RequestParam(name = "name", required = false) String name,
+                                             Pageable pageable){
+        if (cnpj != null){
+            Page<Client> listClient = clientRepository.findByCnpjContainingIgnoreCase(cnpj, pageable);
+            return ResponseEntity.ok().body(listClient);
+        }else{
+            Page<Client> listClient = clientRepository.findByFirstNameContainingIgnoreCase(name, pageable);
+            return ResponseEntity.ok().body(listClient);
+        }
     }
 
     @GetMapping("/{id}")
