@@ -4,6 +4,7 @@ import br.com.uniamerica.Osana.DTO.InventoryDTOS.InventoryDTO;
 import br.com.uniamerica.Osana.DTO.InventoryDTOS.NewInventoryDTO;
 import br.com.uniamerica.Osana.Model.Equipment;
 import br.com.uniamerica.Osana.Model.Inventory;
+import br.com.uniamerica.Osana.Model.TypeServices;
 import br.com.uniamerica.Osana.Repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,6 +43,12 @@ public class InventoryController {
     public ResponseEntity<Page<Inventory>> findAllInventory(Pageable pageable){
         Page<Inventory> listInventory = inventoryRepository.findAll(pageable);
         return ResponseEntity.ok().body(listInventory);
+    }
+
+    @GetMapping("/findInventoryByName")
+    public ResponseEntity<Page<Inventory>> findInventoryByName(@RequestParam(name = "name") String name, Pageable pageable){
+        Page<Inventory> listTypeServices = inventoryRepository.findByNameContainingIgnoreCase(name, pageable);
+        return ResponseEntity.ok().body(listTypeServices);
     }
 
     @GetMapping("/findAll")

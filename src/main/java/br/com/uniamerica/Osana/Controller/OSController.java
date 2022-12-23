@@ -75,6 +75,22 @@ public class OSController {
         }
     }
 
+    @GetMapping("/filterOs")
+    public ResponseEntity<Page<OS>> osFilter(@RequestParam(name = "status", required = false) List<Integer> status,
+                                             @RequestParam(name = "priority", required = false) List<Integer> priority,
+                                             Pageable pageable){
+        if (status != null && priority != null){
+            Page<OS> listOS = osRepository.findByOSPriorityAndStatus(priority, status, pageable);
+            return ResponseEntity.ok().body(listOS);
+        }else if (status != null){
+            Page<OS> listOS = osRepository.findByOSStatus(status, pageable);
+            return ResponseEntity.ok().body(listOS);
+        }else{
+            Page<OS> listOS = osRepository.findByOSPriority(priority, pageable);
+            return ResponseEntity.ok().body(listOS);
+        }
+    }
+
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<OSDTO> updateOS(@PathVariable Long id, @RequestBody @Valid NewOSDTO newOSDTO){

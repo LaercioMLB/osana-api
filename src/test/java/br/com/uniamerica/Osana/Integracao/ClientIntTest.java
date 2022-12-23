@@ -75,9 +75,7 @@ public class ClientIntTest {
     @DisplayName("Teste de Cadastro de Cliente")
 	public void registrationClient() throws Exception {
 		Client Cliente = new Client();
-		repository.save(Cliente)
-        .statusCode(HttpStatus.CREATED.value());
-		assertNotNull(Cliente);
+		repository.save(Cliente);
 	}
     
     @Test
